@@ -9,5 +9,12 @@
 #ifndef Narou_Core_h
 #define Narou_Core_h
 
+#import <Foundation/Foundation.h>
+
+@interface ObjCTest : NSObject
+
+-(void) testMethod;
+
+@end
 
 #endif /* Narou_Core_h */

@@ -9,5 +9,7 @@
 #ifndef Narou_Bridging_Header_h
 #define Narou_Bridging_Header_h
 
+#import "Narou_Core.h"
+
 
 #endif /* Narou_Bridging_Header_h */

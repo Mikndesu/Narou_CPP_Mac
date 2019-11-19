@@ -11,11 +11,13 @@
 #include "picojson.h"
 #include "iostream"
 #include "fstream"
+#include <stdlib.h>
 
 @implementation ObjCTest
 
 -(void) testMethod {
-    const char * filepath = "/Library/Application Support/Narou/Settings.json";
+    const char * filepath = "/Users/mitsukigoto/Settings.json";
+    system("touch /Users/mitsukigoto/Desktop/Settings.json");
     std::cout << filepath << std::endl;
 }
 
