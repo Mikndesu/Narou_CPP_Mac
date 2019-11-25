@@ -674,22 +674,8 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Narou" customModuleProvider="target">
-                    <connections>
-                        <outlet property="menu" destination="0vk-wp-MFa" id="5CA-4K-fHS"/>
-                    </connections>
-                </customObject>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Narou" customModuleProvider="target"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
-                <menu id="0vk-wp-MFa">
-                    <items>
-                        <menuItem title="設定" id="Gxv-HE-ysn">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                        </menuItem>
-                        <menuItem title="再取得" id="6V2-wb-nLJ">
-                            <modifierMask key="keyEquivalentModifierMask" shift="YES"/>
-                        </menuItem>
-                    </items>
-                </menu>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="0.0"/>

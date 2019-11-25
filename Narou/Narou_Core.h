@@ -11,9 +11,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ObjCTest : NSObject
+@interface UseCurl : NSObject
 
--(void) testMethod;
+-(void) usecurl;
 
 @end
 

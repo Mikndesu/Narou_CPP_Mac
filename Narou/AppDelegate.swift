@@ -16,7 +16,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var menu: NSMenu!
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
-       let menu = NSMenu()
+        let menu = NSMenu()
         self.statusItem.title = "Narou"
         self.statusItem.highlightMode = true
         self.statusItem.menu = menu
@@ -46,7 +46,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @IBAction func reload(_ sender: Any) {
-        ObjCTest.init().testMethod()
+        UseCurl.init().usecurl()
     }
     
     @IBAction func quit(_ sender: Any) {
