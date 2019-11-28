@@ -39,11 +39,8 @@ struct Aboutcurl {
     sprintf(filepath, "%s", s.c_str());
     
     std::cout << filepath << std::endl;
-    
-    //CURL Start
     docurl(aboutcurl[0]);
     makeJsonFile();
-    //CURL End
     
 }
 

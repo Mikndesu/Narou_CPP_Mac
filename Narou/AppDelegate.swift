@@ -42,7 +42,32 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to tear down your application
     }
     
+    func notification() {
+        let notification = NSUserNotification()
+        notification.identifier = "unique-id"
+        notification.title = "Hello"
+        notification.subtitle = "How are you?"
+        notification.informativeText = "This is a test"
+        notification.soundName = NSUserNotificationDefaultSoundName
+        let notificationCenter = NSUserNotificationCenter.default
+        notificationCenter.deliver(notification)
+    }
+    
+    func userNotificationCenter(_ center: NSUserNotificationCenter, shouldPresent notification: NSUserNotification) -> Bool {
+        return true;
+    }
+
+    private func userNotificationCenter(_ center: NSUserNotificationCenter, didActivate notification: NSUserNotification) -> Bool {
+        print("ok");
+        return true;
+    }
+
+    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
+        return true
+    }
+    
     @IBAction func preferences(_ sender: Any) {
+        notification()
     }
     
     @IBAction func reload(_ sender: Any) {
