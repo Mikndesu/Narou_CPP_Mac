@@ -37,7 +37,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         menu.addItem(quitItem)
                
     }
-
+    
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
@@ -46,7 +46,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @IBAction func reload(_ sender: Any) {
-        UseCurl.init().usecurl()
+        UseCurlMain.init().usecurlmain()
     }
     
     @IBAction func quit(_ sender: Any) {

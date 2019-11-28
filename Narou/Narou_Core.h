@@ -11,9 +11,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface UseCurl : NSObject
+@interface UseCurlMain : NSObject
 
--(void) usecurl;
+-(void) usecurlmain;
 
 @end
 

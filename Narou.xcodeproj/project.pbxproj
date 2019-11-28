@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B43C70C238CB68C001807DA /* libboost_iostreams-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B43C709238CB645001807DA /* libboost_iostreams-mt.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
+		7B43C70D238CB68C001807DA /* libboost_iostreams-mt.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 7B43C709238CB645001807DA /* libboost_iostreams-mt.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		7B5E05392388B72200A2712F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5E05382388B72200A2712F /* AppDelegate.swift */; };
 		7B5E053B2388B72200A2712F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5E053A2388B72200A2712F /* ViewController.swift */; };
 		7B5E053D2388B72600A2712F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B5E053C2388B72600A2712F /* Assets.xcassets */; };
@@ -33,7 +35,25 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		7B43C70E238CB68C001807DA /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7B43C70D238CB68C001807DA /* libboost_iostreams-mt.dylib in Embed Libraries */,
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		7B43C704238CB634001807DA /* libboost_iostreams.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_iostreams.a; path = ../../../../usr/local/Cellar/boost/1.71.0/lib/libboost_iostreams.a; sourceTree = "<group>"; };
+		7B43C709238CB645001807DA /* libboost_iostreams-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_iostreams-mt.dylib"; path = "../../../../usr/local/Cellar/boost/1.71.0/lib/libboost_iostreams-mt.dylib"; sourceTree = "<group>"; };
+		7B4B9E8E238CA9A300614BF7 /* libboost_iostreams.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_iostreams.dylib; path = ../../../../usr/local/Cellar/boost/1.71.0/lib/libboost_iostreams.dylib; sourceTree = "<group>"; };
+		7B4B9E92238CABA400614BF7 /* libboost_iostreams-mt.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libboost_iostreams-mt.a"; path = "../../../../usr/local/Cellar/boost/1.71.0/lib/libboost_iostreams-mt.a"; sourceTree = "<group>"; };
 		7B5E05352388B72200A2712F /* Narou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Narou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B5E05382388B72200A2712F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B5E053A2388B72200A2712F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B43C70C238CB68C001807DA /* libboost_iostreams-mt.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +99,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B4B9E8D238CA9A300614BF7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7B43C709238CB645001807DA /* libboost_iostreams-mt.dylib */,
+				7B43C704238CB634001807DA /* libboost_iostreams.a */,
+				7B4B9E92238CABA400614BF7 /* libboost_iostreams-mt.a */,
+				7B4B9E8E238CA9A300614BF7 /* libboost_iostreams.dylib */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7B5E052C2388B72200A2712F = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +117,7 @@
 				7B5E054A2388B72600A2712F /* NarouTests */,
 				7B5E05552388B72600A2712F /* NarouUITests */,
 				7B5E05362388B72200A2712F /* Products */,
+				7B4B9E8D238CA9A300614BF7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -143,6 +176,7 @@
 				7B5E05312388B72200A2712F /* Sources */,
 				7B5E05322388B72200A2712F /* Frameworks */,
 				7B5E05332388B72200A2712F /* Resources */,
+				7B43C70E238CB68C001807DA /* Embed Libraries */,
 			);
 			buildRules = (
 			);
