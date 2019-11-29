@@ -45,8 +45,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func notification() {
         let notification = NSUserNotification()
         notification.identifier = "unique-id"
-        notification.title = "Hello"
-        notification.subtitle = "How are you?"
+        notification.title = "New ReNewal"
         notification.informativeText = "This is a test"
         notification.soundName = NSUserNotificationDefaultSoundName
         let notificationCenter = NSUserNotificationCenter.default
@@ -72,6 +71,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBAction func reload(_ sender: Any) {
         UseCurlMain.init().usecurlmain()
+        print(UseCurlMain.init().getIsReNew());
     }
     
     @IBAction func quit(_ sender: Any) {

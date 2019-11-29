@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B12076523900645006129F1 /* Cookie.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7B12076423900645006129F1 /* Cookie.txt */; };
 		7B43C70C238CB68C001807DA /* libboost_iostreams-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B43C709238CB645001807DA /* libboost_iostreams-mt.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
 		7B43C70D238CB68C001807DA /* libboost_iostreams-mt.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 7B43C709238CB645001807DA /* libboost_iostreams-mt.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		7B5E05392388B72200A2712F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5E05382388B72200A2712F /* AppDelegate.swift */; };
@@ -50,6 +51,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7B12076423900645006129F1 /* Cookie.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cookie.txt; sourceTree = "<group>"; };
 		7B43C704238CB634001807DA /* libboost_iostreams.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_iostreams.a; path = ../../../../usr/local/Cellar/boost/1.71.0/lib/libboost_iostreams.a; sourceTree = "<group>"; };
 		7B43C709238CB645001807DA /* libboost_iostreams-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_iostreams-mt.dylib"; path = "../../../../usr/local/Cellar/boost/1.71.0/lib/libboost_iostreams-mt.dylib"; sourceTree = "<group>"; };
 		7B4B9E8E238CA9A300614BF7 /* libboost_iostreams.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_iostreams.dylib; path = ../../../../usr/local/Cellar/boost/1.71.0/lib/libboost_iostreams.dylib; sourceTree = "<group>"; };
@@ -134,16 +136,17 @@
 		7B5E05372388B72200A2712F /* Narou */ = {
 			isa = PBXGroup;
 			children = (
-				7B5E056B238BBD8600A2712F /* picojson.h */,
 				7B5E05672388B7E000A2712F /* Narou_Core.mm */,
-				7B5E05382388B72200A2712F /* AppDelegate.swift */,
 				7B5E05682388B7E100A2712F /* Narou_Core.h */,
+				7B5E05382388B72200A2712F /* AppDelegate.swift */,
 				7B5E053A2388B72200A2712F /* ViewController.swift */,
 				7B5E053C2388B72600A2712F /* Assets.xcassets */,
 				7B5E053E2388B72600A2712F /* Main.storyboard */,
 				7B5E05412388B72600A2712F /* Info.plist */,
 				7B5E05422388B72600A2712F /* Narou.entitlements */,
+				7B5E056B238BBD8600A2712F /* picojson.h */,
 				7B5E05662388B7E000A2712F /* Narou-Bridging-Header.h */,
+				7B12076423900645006129F1 /* Cookie.txt */,
 			);
 			path = Narou;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B5E053D2388B72600A2712F /* Assets.xcassets in Resources */,
+				7B12076523900645006129F1 /* Cookie.txt in Resources */,
 				7B5E05402388B72600A2712F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

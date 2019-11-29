@@ -13,6 +13,7 @@
 
 @interface UseCurlMain : NSObject
 
+-(NSInteger) getIsReNew;
 -(void) usecurlmain;
 
 @end
