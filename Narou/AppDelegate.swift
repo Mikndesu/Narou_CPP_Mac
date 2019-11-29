@@ -12,6 +12,7 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
     
     let statusItem = NSStatusBar.system.statusItem(withLength: -1)
+    var timer = Timer()
 
     @IBOutlet weak var menu: NSMenu!
     func applicationDidFinishLaunching(_ aNotification: Notification) {
@@ -31,25 +32,69 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         reloadItem.action = #selector(AppDelegate.reload(_:))
         menu.addItem(reloadItem)
         
+        let stopTimerItem = NSMenuItem()
+        stopTimerItem.title = "Timer Stop"
+        stopTimerItem.action = #selector(AppDelegate.stopTimer(_:))
+        menu.addItem(stopTimerItem)
+        
         let quitItem = NSMenuItem()
         quitItem.title = "Quit Application"
         quitItem.action = #selector(AppDelegate.quit(_:))
         menu.addItem(quitItem)
-               
+        
+        timer = Timer.scheduledTimer(withTimeInterval: 3600, repeats: true, block: { (timer) in
+            UseCurlMain.init().usecurlmain()
+            let isReNew = UseCurlMain.init().getIsReNew()
+            if(isReNew == 1) {
+                print("ReNew")
+                let notification = NSUserNotification()
+                notification.identifier = "unique-id"
+                notification.title = "New ReNewal of NAROU"
+                notification.informativeText = "New ReNew!!!"
+                notification.soundName = NSUserNotificationDefaultSoundName
+                let notificationCenter = NSUserNotificationCenter.default
+                notificationCenter.deliver(notification)
+            } else if (isReNew == 0) {
+                print("No ReNew")
+            }
+        })
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {
+        UseCurlMain.init().usecurlmain()
         // Insert code here to tear down your application
     }
     
     func notification() {
         let notification = NSUserNotification()
         notification.identifier = "unique-id"
-        notification.title = "New ReNewal"
-        notification.informativeText = "This is a test"
+        notification.title = "New ReNewal of NAROU"
+        notification.informativeText = "New ReNew!!!"
         notification.soundName = NSUserNotificationDefaultSoundName
         let notificationCenter = NSUserNotificationCenter.default
         notificationCenter.deliver(notification)
+    }
+    
+    @IBAction func preferences(_ sender: Any) {
+    }
+    
+    @IBAction func reload(_ sender: Any) {
+        UseCurlMain.init().usecurlmain()
+        let isReNew = UseCurlMain.init().getIsReNew()
+        if(isReNew == 1) {
+            print("ReNew")
+            notification()
+        } else if (isReNew == 0) {
+            print("No ReNew")
+        }
+    }
+    
+    @IBAction func stopTimer(_ sender: Any) {
+        timer.invalidate()
+    }
+    
+    @IBAction func quit(_ sender: Any) {
+        NSApplication.shared.terminate(self)
     }
     
     func userNotificationCenter(_ center: NSUserNotificationCenter, shouldPresent notification: NSUserNotification) -> Bool {
@@ -57,27 +102,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     private func userNotificationCenter(_ center: NSUserNotificationCenter, didActivate notification: NSUserNotification) -> Bool {
-        print("ok");
-        return true;
+        print("ok")
+        return true
     }
 
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
         return true
     }
-    
-    @IBAction func preferences(_ sender: Any) {
-        notification()
-    }
-    
-    @IBAction func reload(_ sender: Any) {
-        UseCurlMain.init().usecurlmain()
-        print(UseCurlMain.init().getIsReNew());
-    }
-    
-    @IBAction func quit(_ sender: Any) {
-        NSApplication.shared.terminate(self)
-    }
-
 
 }
-
