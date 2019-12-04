@@ -8,11 +8,12 @@
 
 import Cocoa
 
-class PreferWindow: NSViewController {
+class PreferWindow: NSWindowController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do view setup here.
-    }
+    override func windowDidLoad() {
+        super.windowDidLoad()
     
+        // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+    }
+
 }

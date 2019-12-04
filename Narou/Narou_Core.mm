@@ -11,38 +11,26 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <stdlib.h>
 #include <curl/curl.h>
 #include "picojson.h"
+#include "DealJson.hpp"
 
 @implementation UseCurlMain
 
 NSInteger isReNew;
 
+DealJson dj;
+
 struct Aboutcurl {
     const char* name;
     const char* url;
     const char* useragent;
-    const char* iksm_session;
+    const char* cookie;
 };
 
--(void) usecurlmain {
-    
-    Aboutcurl aboutcurl[] = {
-        {"Narou", "http://api.syosetu.com/novelapi/api/?out=json&of=l&ncode=N2267BE", "Mozilla/5.0 (X11; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0", ""},
-        {"Iksm", "https://app.splatoon2.nintendo.net/api/data/stages", "Mozilla/5.0 (X11; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0", ""}
-    };
-    
-    docurl(aboutcurl[0]);
-    makeJsonFile();
-    
-}
-
--(NSInteger) getIsReNew {
-    return isReNew;
-}
-
-//A Method for Making Directory to Save Setting File
-std::string makedir() {
+//A Method for Making Directory to Save Setting Files
+std::string makeNeedFile() {
     NSArray* array = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     NSString* cacheDirPath = [array objectAtIndex:0];
     NSString* newCacheDirPath = [cacheDirPath stringByAppendingPathComponent:@"Settings_Narou"];
@@ -57,17 +45,111 @@ std::string makedir() {
     return result;
 }
 
-//A Method for Executing CURL
-void docurl(const Aboutcurl aboutcurl) {
+std::string cachepath = makeNeedFile();
+
+-(void) usecurlmain {
+    
+    Aboutcurl aboutcurl[] = {
+        {"Narou", "http://api.syosetu.com/novelapi/api/?out=json&of=l&ncode=N2267BE", "Mozilla/5.0 (X11; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0", ""},
+        {"Iksm", "https://app.splatoon2.nintendo.net/api/data/stages", "Mozilla/5.0 (X11; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0", ""}
+    };
+    
+    docurl(aboutcurl[0]);
+    
+    std::string filepath = cachepath;
+    filepath += "/settings.json";
+    dj.makeJsonFile(filepath);
+    
+}
+
+//C++ Method Wrapper for ObjC & Swift
+-(void) writelog: (NSString *) contents {
+    //Wrote down this contents
+    std::string w = [contents UTF8String];
+    writeLog(w);
+}
+
+//Receive Value to AppDelegate.Swift
+-(NSInteger) getIsReNew {
+    return isReNew;
+}
+
+-(void) showLog {
+    std::string command = "open ";
+    std::string filepath = cachepath;
+    filepath += "/logs.txt";
+    command += filepath;
+    system(command.c_str());
+}
+
+void writeLog(std::string contents) {
+    std::string filepath = cachepath;
+    filepath += "/logs.txt";
+    std::ofstream ofs;
+    ofs.open(filepath, std::ios::out);
+    ofs << contents << std::endl;
+    ofs.close();
+}
+
+void renewCheck(std::string contents, std::string filepath) {
     
     int a,b;
+    
+    std::ifstream ifs(filepath);
+    //the novels words to get ReNewal Info
+    std::string words;
+    std::getline(ifs, words);
+    std::cout << words << std::endl;
+    
+    if(words.empty()) {
+        a = 0;
+    } else {
+        a = std::stoi(words);
+    }
+    
+    ifs.close();
+    
+    std::ofstream ofs;
+    ofs.open(filepath, std::ios::out);
+    
+    std::string next_words = dj.readJsonFilefromInternet(contents.c_str());
+    std::cout << next_words << std::endl;
+    
+    if(next_words.empty()) {
+        b = 0;
+    } else {
+        b = std::stoi(next_words);
+    }
+       
+    ofs << next_words << std::endl;
+    ofs.close();
+    
+    if(a < b) {
+        //Here means there are new Renewals
+        isReNew = 1;
+        std::cout << "a<b" << std::endl;
+        writeLog(words);
+        writeLog(next_words);
+        writeLog("a<b");
+    } else if(a == b) {
+        //Here means there is no Renewals
+        isReNew = 0;
+        std::cout << "a==b" << std::endl;
+        writeLog(words);
+        writeLog(next_words);
+        writeLog("a=b");
+    }
+}
+
+//A Method for Executing CURL
+void docurl(const Aboutcurl aboutcurl) {
 
     CURL * curl;
     CURLcode ret;
     curl = curl_easy_init();
     std::string chunk;
     
-    std::string filepath = makedir();
+    std::string filepath = cachepath;
     filepath += "/data.txt";
     
     if(curl == NULL) {
@@ -90,79 +172,8 @@ void docurl(const Aboutcurl aboutcurl) {
     chunk.replace(0, 16, "");
     chunk.insert(10, "\"");
     chunk.insert(18, "\"");
-    
-    std::ifstream ifs(filepath);
-    //the novels words to get ReNewal Info
-    std::string words;
-    std::getline(ifs, words);
-    std::cout << words << std::endl;
-    
-    if(words.empty()) {
-        a = 0;
-    } else {
-        a = std::stoi(words);
-    }
-    
-    ifs.close();
-    
-    std::ofstream ofs;
-    ofs.open(filepath, std::ios::out);
-    
-    std::string next_words = readJsonFile(chunk.c_str());
-    std::cout << next_words << std::endl;
-    
-    if(next_words.empty()) {
-        b = 0;
-    } else {
-        b = std::stoi(next_words);
-    }
-       
-    ofs << next_words << std::endl;
-    ofs.close();
-    
-    if(a < b) {
-        //Here means there are new Renewals
-        isReNew = 1;
-        std::cout << "a<b" << std::endl;
-    } else if(a == b) {
-        //Here means there is no Renewals
-        isReNew = 0;
-        std::cout << "a==b" << std::endl;
-    }
-    
-}
 
-std::string readJsonFile(const char* contents) {
-    picojson::value v;
-    std::string err;
-    picojson::parse(v, contents, contents + strlen(contents), &err);
-    if (err.empty())
-    {
-         picojson::object& o = v.get<picojson::object>();
-        return o["length"].get<std::string>();
-    }
-    return "";
-}
-
-//No Use Now
-void makeJsonFile() {
-    picojson::object license;
-    picojson::array datalist;
-    {
-        picojson::object data;
-        data.insert(std::make_pair("url_Naoru", picojson::value("http://api.syosetu.com/novelapi/api/?out=json&gzip=5")));
-        data.insert(std::make_pair("url_iksm", picojson::value("https://app.splatoon2.nintendo.net/api/data/stages")));
-        data.insert(std::make_pair("iksm_session", picojson::value("")));
-        data.insert(std::make_pair("useragent", picojson::value("Mozilla/5.0 (X11; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0")));
-
-        picojson::object id;
-        id.insert(std::make_pair("CURLSETTIGS", picojson::value(data)));
-
-        datalist.push_back(picojson::value(id));
-    }
-    
-    license.insert(std::make_pair("Settings", picojson::value(datalist)));
-//    std::cout << picojson::value(license) << std::endl;
+    renewCheck(chunk, filepath);
 }
 
 size_t callbackWrite(char *ptr, size_t size, size_t nmemb, std::string * stream) {

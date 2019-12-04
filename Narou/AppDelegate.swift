@@ -27,10 +27,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         reloadItem.action = #selector(AppDelegate.reload(_:))
         menu.addItem(reloadItem)
         
-        let stopTimerItem = NSMenuItem()
-        stopTimerItem.title = "Timer Stop"
-        stopTimerItem.action = #selector(AppDelegate.stopTimer(_:))
-        menu.addItem(stopTimerItem)
+        let showItem = NSMenuItem()
+        showItem.title = "Show Log"
+        showItem.action = #selector(AppDelegate.showLog(_:))
+        menu.addItem(showItem)
         
         let quitItem = NSMenuItem()
         quitItem.title = "Quit Application"
@@ -49,14 +49,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 notification.soundName = NSUserNotificationDefaultSoundName
                 let notificationCenter = NSUserNotificationCenter.default
                 notificationCenter.deliver(notification)
+                UseCurlMain.init().writelog("ReNew");
+                UseCurlMain.init().writelog(self.getDate());
+                UseCurlMain.init().writelog("\n");
             } else if (isReNew == 0) {
                 print("No ReNew")
+                UseCurlMain.init().writelog("No ReNew");
+                UseCurlMain.init().writelog(self.getDate());
+                UseCurlMain.init().writelog("\n");
             }
         })
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {
         UseCurlMain.init().usecurlmain()
+        print("Quit This")
         // Insert code here to tear down your application
     }
     
@@ -64,7 +71,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let notification = NSUserNotification()
         notification.identifier = "unique-id"
         notification.title = "New ReNewal of NAROU"
-        notification.informativeText = "New ReNew!!!"
+        notification.informativeText = "ReNew!!!"
         notification.soundName = NSUserNotificationDefaultSoundName
         let notificationCenter = NSUserNotificationCenter.default
         notificationCenter.deliver(notification)
@@ -75,17 +82,37 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let isReNew = UseCurlMain.init().getIsReNew()
         if(isReNew == 1) {
             print("ReNew")
+            UseCurlMain.init().writelog("ReNew");
+            UseCurlMain.init().writelog(self.getDate());
+            UseCurlMain.init().writelog("\n");
             notification()
         } else if (isReNew == 0) {
             print("No ReNew")
+            UseCurlMain.init().writelog("No ReNew");
+            UseCurlMain.init().writelog(self.getDate());
+            UseCurlMain.init().writelog("\n");
         }
     }
     
-    @IBAction func stopTimer(_ sender: Any) {
-        timer.invalidate()
+    func getDate() -> String {
+        let date = Date()
+
+        let format = DateFormatter()
+        format.dateFormat = "yyyy-MM-dd HH:mm"
+        format.timeZone   = TimeZone(identifier: "Asia/Tokyo")
+
+        let result = format.string(from: date)
+        print( "現在時刻： ", result )
+
+        return result
+    }
+    
+    @IBAction func showLog(_ sender: Any) {
+        UseCurlMain.init().showLog();
     }
     
     @IBAction func quit(_ sender: Any) {
+        timer.invalidate()
         NSApplication.shared.terminate(self)
     }
     
@@ -99,7 +126,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
-        return true
+        return false
     }
-
+    
 }
