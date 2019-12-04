@@ -674,8 +674,22 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Narou" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Narou" customModuleProvider="target">
+                    <connections>
+                        <outlet property="menu" destination="r2K-E0-3ET" id="I5f-Ib-dOR"/>
+                    </connections>
+                </customObject>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
+                <menu id="r2K-E0-3ET">
+                    <items>
+                        <menuItem title="Preferences" id="ojO-aM-zDe">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <segue destination="5g7-24-qdf" kind="show" id="1I6-PB-g6y"/>
+                            </connections>
+                        </menuItem>
+                    </items>
+                </menu>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="0.0"/>
@@ -713,6 +727,19 @@
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="655"/>
+        </scene>
+        <!--Prefer Window-->
+        <scene sceneID="kAb-95-rYb">
+            <objects>
+                <viewController id="5g7-24-qdf" customClass="PreferWindow" customModule="Narou" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="L2M-81-2a5">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="1nP-UP-Nmy" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="592" y="-108"/>
         </scene>
     </scenes>
 </document>

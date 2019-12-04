@@ -17,6 +17,7 @@
 		7B5E054C2388B72600A2712F /* NarouTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5E054B2388B72600A2712F /* NarouTests.swift */; };
 		7B5E05572388B72600A2712F /* NarouUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5E05562388B72600A2712F /* NarouUITests.swift */; };
 		7B5E056A2388B7E100A2712F /* Narou_Core.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7B5E05672388B7E000A2712F /* Narou_Core.mm */; };
+		7BF75BCD23980FCD000CCE96 /* PreferWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF75BCB23980FCD000CCE96 /* PreferWindow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		7B5E05672388B7E000A2712F /* Narou_Core.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Narou_Core.mm; sourceTree = "<group>"; };
 		7B5E05682388B7E100A2712F /* Narou_Core.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Narou_Core.h; sourceTree = "<group>"; };
 		7B5E056B238BBD8600A2712F /* picojson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = picojson.h; sourceTree = "<group>"; };
+		7BF75BCB23980FCD000CCE96 /* PreferWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferWindow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 				7B5E056B238BBD8600A2712F /* picojson.h */,
 				7B5E05662388B7E000A2712F /* Narou-Bridging-Header.h */,
 				7B12076423900645006129F1 /* Cookie.txt */,
+				7BF75BCB23980FCD000CCE96 /* PreferWindow.swift */,
 			);
 			path = Narou;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B5E053B2388B72200A2712F /* ViewController.swift in Sources */,
+				7BF75BCD23980FCD000CCE96 /* PreferWindow.swift in Sources */,
 				7B5E056A2388B7E100A2712F /* Narou_Core.mm in Sources */,
 				7B5E05392388B72200A2712F /* AppDelegate.swift in Sources */,
 			);
