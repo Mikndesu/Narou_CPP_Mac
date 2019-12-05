@@ -86,7 +86,10 @@ void writeLog(std::string contents) {
     std::string filepath = cachepath;
     filepath += "/logs.txt";
     std::ofstream ofs;
-    ofs.open(filepath, std::ios::out);
+    ofs.open(filepath, std::ios::app);
+    if(!ofs) {
+        std::cout << "Can't Open" << std::endl;
+    }
     ofs << contents << std::endl;
     ofs.close();
 }

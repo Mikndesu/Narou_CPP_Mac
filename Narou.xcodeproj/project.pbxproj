@@ -18,6 +18,7 @@
 		7B5E05572388B72600A2712F /* NarouUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5E05562388B72600A2712F /* NarouUITests.swift */; };
 		7B5E056A2388B7E100A2712F /* Narou_Core.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7B5E05672388B7E000A2712F /* Narou_Core.mm */; };
 		7BECD10423981AC100003BBD /* PreferWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BECD10323981AC100003BBD /* PreferWindow.swift */; };
+		7BECD10623983FB400003BBD /* ReadMe.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7BECD10523983FB400003BBD /* ReadMe.txt */; };
 		7BF75BD1239814F5000CCE96 /* DealJson.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7BF75BCF239814F4000CCE96 /* DealJson.cpp */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +77,7 @@
 		7B5E05682388B7E100A2712F /* Narou_Core.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Narou_Core.h; sourceTree = "<group>"; };
 		7B5E056B238BBD8600A2712F /* picojson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = picojson.h; sourceTree = "<group>"; };
 		7BECD10323981AC100003BBD /* PreferWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferWindow.swift; sourceTree = "<group>"; };
+		7BECD10523983FB400003BBD /* ReadMe.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = ReadMe.txt; sourceTree = "<group>"; };
 		7BF75BCF239814F4000CCE96 /* DealJson.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DealJson.cpp; sourceTree = "<group>"; };
 		7BF75BD0239814F4000CCE96 /* DealJson.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DealJson.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -155,6 +157,7 @@
 				7B5E05662388B7E000A2712F /* Narou-Bridging-Header.h */,
 				7B12076423900645006129F1 /* Cookie.txt */,
 				7B5E053A2388B72200A2712F /* ViewController.swift */,
+				7BECD10523983FB400003BBD /* ReadMe.txt */,
 			);
 			path = Narou;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 			files = (
 				7B5E053D2388B72600A2712F /* Assets.xcassets in Resources */,
 				7B12076523900645006129F1 /* Cookie.txt in Resources */,
+				7BECD10623983FB400003BBD /* ReadMe.txt in Resources */,
 				7B5E05402388B72600A2712F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
