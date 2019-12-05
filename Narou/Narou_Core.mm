@@ -11,6 +11,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <array>
 #include <stdlib.h>
 #include <curl/curl.h>
 #include "picojson.h"
@@ -26,7 +27,6 @@ struct Aboutcurl {
     const char* name;
     const char* url;
     const char* useragent;
-    const char* cookie;
 };
 
 //A Method for Making Directory to Save Setting Files
@@ -49,15 +49,15 @@ std::string cachepath = makeNeedFile();
 
 -(void) usecurlmain {
     
+    std::string filepath = cachepath;
+    filepath += "settings.json";
+    std::array<std::string, 2> value = dj.readJsonFilefromLocal(filepath);
+    
     Aboutcurl aboutcurl[] = {
-        {"Narou", "http://api.syosetu.com/novelapi/api/?out=json&of=l&ncode=N2267BE", "Mozilla/5.0 (X11; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0", ""},
-        {"Iksm", "https://app.splatoon2.nintendo.net/api/data/stages", "Mozilla/5.0 (X11; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0", ""}
+        {"Narou", value[0].c_str(), "Mozilla/5.0 (X11; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0"}
     };
     
     docurl(aboutcurl[0]);
-    
-    std::string filepath = cachepath;
-    filepath += "/settings.json";
     dj.makeJsonFile(filepath);
     
 }
@@ -177,6 +177,7 @@ void docurl(const Aboutcurl aboutcurl) {
     chunk.insert(18, "\"");
 
     renewCheck(chunk, filepath);
+    std::cout << chunk << std::endl;
 }
 
 size_t callbackWrite(char *ptr, size_t size, size_t nmemb, std::string * stream) {

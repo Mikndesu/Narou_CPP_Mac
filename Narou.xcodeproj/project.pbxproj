@@ -122,6 +122,7 @@
 		7B5E052C2388B72200A2712F = {
 			isa = PBXGroup;
 			children = (
+				7BECD10523983FB400003BBD /* ReadMe.txt */,
 				7B5E05372388B72200A2712F /* Narou */,
 				7B5E054A2388B72600A2712F /* NarouTests */,
 				7B5E05552388B72600A2712F /* NarouUITests */,
@@ -157,7 +158,6 @@
 				7B5E05662388B7E000A2712F /* Narou-Bridging-Header.h */,
 				7B12076423900645006129F1 /* Cookie.txt */,
 				7B5E053A2388B72200A2712F /* ViewController.swift */,
-				7BECD10523983FB400003BBD /* ReadMe.txt */,
 			);
 			path = Narou;
 			sourceTree = "<group>";

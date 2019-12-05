@@ -10,6 +10,7 @@
 #define DealJson_hpp
 
 #include <stdio.h>
+#include <array>
 #include <string>
 
 class DealJson {
@@ -18,7 +19,7 @@ class DealJson {
     
     std::string readJsonFilefromInternet(const char* contents);
     
-    void readJsonFilefromLocal(std::string filepath);
+    std::array<std::string, 2> readJsonFilefromLocal(std::string filepath);
     
     void makeJsonFile(std::string filepath);
     
