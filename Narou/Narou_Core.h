@@ -15,6 +15,8 @@
 
 -(NSInteger) getIsReNew;
 -(void) usecurlmain;
+-(void) showLog;
+-(void) writelog: (NSString *) contents;
 
 @end
 
