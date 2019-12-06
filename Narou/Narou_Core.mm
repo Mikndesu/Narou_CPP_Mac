@@ -12,7 +12,9 @@
 #include <string>
 #include <fstream>
 #include <array>
-#include <stdlib.h>
+#include <cstdarg>
+#include <utility>
+#include <cstdlib>
 #include <curl/curl.h>
 #include "picojson.h"
 #include "DealJson.hpp"
@@ -28,6 +30,8 @@ struct Aboutcurl {
     const char* url;
     const char* useragent;
 };
+
+void writeLog(){}
 
 //A Method for Making Directory to Save Setting Files
 std::string makeNeedFile() {
@@ -65,8 +69,8 @@ std::string cachepath = makeNeedFile();
 //C++ Method Wrapper for ObjC & Swift
 -(void) writelog: (NSString *) contents {
     //Wrote down this contents
-    std::string w = [contents UTF8String];
-    writeLog(w);
+    std::string s = [contents UTF8String];
+    writeLog(s);
 }
 
 //Receive Value to AppDelegate.Swift
@@ -82,7 +86,9 @@ std::string cachepath = makeNeedFile();
     system(command.c_str());
 }
 
-void writeLog(std::string contents) {
+//see https://cpprefjp.github.io/lang/cpp11/variadic_templates.html
+template <class Head, class... Tail>
+void writeLog(Head&& head, Tail&&... tail) {
     std::string filepath = cachepath;
     filepath += "/logs.txt";
     std::ofstream ofs;
@@ -90,8 +96,9 @@ void writeLog(std::string contents) {
     if(!ofs) {
         std::cout << "Can't Open" << std::endl;
     }
-    ofs << contents << std::endl;
+    ofs << head << std::endl;
     ofs.close();
+    writeLog(std::forward<Tail>(tail)...);
 }
 
 void renewCheck(std::string contents, std::string filepath) {
@@ -131,16 +138,13 @@ void renewCheck(std::string contents, std::string filepath) {
         //Here means there are new Renewals
         isReNew = 1;
         std::cout << "a<b" << std::endl;
-        writeLog(words);
-        writeLog(next_words);
-        writeLog("a<b");
+        writeLog(words, next_words, "a<b");
     } else if(a == b) {
         //Here means there is no Renewals
         isReNew = 0;
         std::cout << "a==b" << std::endl;
-        writeLog(words);
-        writeLog(next_words);
-        writeLog("a=b");
+        writeLog(words, next_words, "a==b");
+//        writeLog("a=b");
     }
 }
 
