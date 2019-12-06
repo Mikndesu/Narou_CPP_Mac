@@ -33,7 +33,7 @@ struct Aboutcurl {
 std::string makeNeedFile() {
     NSArray* array = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     NSString* cacheDirPath = [array objectAtIndex:0];
-    NSString* newCacheDirPath = [cacheDirPath stringByAppendingPathComponent:@"Settings_Narou"];
+    NSString* newCacheDirPath = [cacheDirPath stringByAppendingPathComponent:@"Narou"];
     NSFileManager* fileManager = [NSFileManager defaultManager];
     NSError* error = nil;
     BOOL created = [fileManager createDirectoryAtPath:(newCacheDirPath) withIntermediateDirectories:(YES) attributes:(nil) error:&error];
@@ -49,16 +49,27 @@ std::string cachepath = makeNeedFile();
 
 -(void) usecurlmain {
     
+//    ?out=json&of=l&ncode=N2267BE
+    std::cout << "a" << std::endl;
     std::string filepath = cachepath;
-    filepath += "settings.json";
-    std::array<std::string, 2> value = dj.readJsonFilefromLocal(filepath);
-    
+    filepath += "/settings.json";
+    std::ifstream ifs(filepath);
+    if(!ifs) {
+        dj.makeJsonFile(filepath);
+        std::cout << "b" << std::endl;
+        ifs.close();
+    }
+    std::array<std::string, 4> value = dj.readJsonFilefromLocal(filepath);
+    for(int i = 0; i < 4; i++) {
+        std::cout << value[i] << std::endl;
+    }
+    std::string url = value[3] + "?out=" + value[2] + "&of=" + value[1] + "&ncode=" + value[0];
+    std::cout << url << std::endl;
     Aboutcurl aboutcurl[] = {
-        {"Narou", value[0].c_str(), "Mozilla/5.0 (X11; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0"}
+        {"Narou", url.c_str(), "Mozilla/5.0 (X11; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0"}
     };
     
     docurl(aboutcurl[0]);
-    dj.makeJsonFile(filepath);
     
 }
 

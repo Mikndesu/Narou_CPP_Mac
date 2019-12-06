@@ -19,7 +19,8 @@ class DealJson {
     
     std::string readJsonFilefromInternet(const char* contents);
     
-    std::array<std::string, 2> readJsonFilefromLocal(std::string filepath);
+    //std::array<std::string, 5>
+    std::array<std::string, 4> readJsonFilefromLocal(std::string filepath);
     
     void makeJsonFile(std::string filepath);
     
