@@ -42,7 +42,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let isReNew = UseCurlMain.init().getIsReNew()
             if(isReNew == 1) {
                 print("ReNew")
-                self.notification()
                 UseCurlMain.init().writelog("ReNew");
                 UseCurlMain.init().writelog(self.getDate());
                 UseCurlMain.init().writelog("\n");
@@ -63,7 +62,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func notification() {
         let notification = NSUserNotification()
-        notification.identifier = "unique-id"
+        //Means "N"arou Update
+        notification.identifier = "n"
         notification.title = "ReNewal of NAROU"
         notification.informativeText = "ReNew!!!"
         notification.soundName = NSUserNotificationDefaultSoundName
@@ -79,7 +79,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             UseCurlMain.init().writelog("ReNew");
             UseCurlMain.init().writelog(self.getDate());
             UseCurlMain.init().writelog("\n");
-            notification()
         } else if (isReNew == 0) {
             print("No ReNew")
             UseCurlMain.init().writelog("No ReNew");
@@ -103,6 +102,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBAction func showLog(_ sender: Any) {
         UseCurlMain.init().showLog();
+        self.notification()
     }
     
     @IBAction func quit(_ sender: Any) {
@@ -115,7 +115,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     private func userNotificationCenter(_ center: NSUserNotificationCenter, didActivate notification: NSUserNotification) -> Bool {
-        print("ok")
+
         return true
     }
 

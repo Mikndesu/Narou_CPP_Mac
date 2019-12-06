@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		7B12076523900645006129F1 /* Cookie.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7B12076423900645006129F1 /* Cookie.txt */; };
-		7B43C70C238CB68C001807DA /* libboost_iostreams-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B43C709238CB645001807DA /* libboost_iostreams-mt.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
-		7B43C70D238CB68C001807DA /* libboost_iostreams-mt.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 7B43C709238CB645001807DA /* libboost_iostreams-mt.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		7B5E05392388B72200A2712F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5E05382388B72200A2712F /* AppDelegate.swift */; };
 		7B5E053B2388B72200A2712F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5E053A2388B72200A2712F /* ViewController.swift */; };
 		7B5E053D2388B72600A2712F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B5E053C2388B72600A2712F /* Assets.xcassets */; };
@@ -38,20 +36,6 @@
 			remoteInfo = Narou;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		7B43C70E238CB68C001807DA /* Embed Libraries */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				7B43C70D238CB68C001807DA /* libboost_iostreams-mt.dylib in Embed Libraries */,
-			);
-			name = "Embed Libraries";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		7B12076423900645006129F1 /* Cookie.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cookie.txt; sourceTree = "<group>"; };
@@ -87,7 +71,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B43C70C238CB68C001807DA /* libboost_iostreams-mt.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,7 +173,6 @@
 				7B5E05312388B72200A2712F /* Sources */,
 				7B5E05322388B72200A2712F /* Frameworks */,
 				7B5E05332388B72200A2712F /* Resources */,
-				7B43C70E238CB68C001807DA /* Embed Libraries */,
 			);
 			buildRules = (
 			);
@@ -486,6 +468,7 @@
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Narou/Narou.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 44W8AGS93F;
@@ -520,6 +503,7 @@
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Narou/Narou.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 44W8AGS93F;
@@ -550,6 +534,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 44W8AGS93F;
@@ -572,6 +557,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 44W8AGS93F;
