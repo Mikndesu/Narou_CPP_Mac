@@ -91,6 +91,12 @@ std::string cachepath = makeNeedFile();
     system(command.c_str());
 }
 
+-(void) rewriteJson:(NSString *) of ncode:(NSString *) ncode {
+    std::string filepath = cachepath;
+    filepath += "/settings.json";
+    dj.makeJsonFile(filepath, [ncode UTF8String], [of UTF8String]);
+}
+
 void writeLog(std::string contents) {
     std::string filepath = cachepath;
     filepath += "/logs.txt";

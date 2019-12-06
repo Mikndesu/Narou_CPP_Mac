@@ -128,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				7B5E05382388B72200A2712F /* AppDelegate.swift */,
+				7B5E053A2388B72200A2712F /* ViewController.swift */,
 				7B5E05672388B7E000A2712F /* Narou_Core.mm */,
 				7BF75BCF239814F4000CCE96 /* DealJson.cpp */,
 				7BF75BD0239814F4000CCE96 /* DealJson.hpp */,
@@ -140,7 +141,6 @@
 				7B5E056B238BBD8600A2712F /* picojson.h */,
 				7B5E05662388B7E000A2712F /* Narou-Bridging-Header.h */,
 				7B12076423900645006129F1 /* Cookie.txt */,
-				7B5E053A2388B72200A2712F /* ViewController.swift */,
 			);
 			path = Narou;
 			sourceTree = "<group>";
