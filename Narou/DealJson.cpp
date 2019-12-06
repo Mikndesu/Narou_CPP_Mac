@@ -47,7 +47,7 @@ std::array<std::string, 4> DealJson::readJsonFilefromLocal(std::string filepath)
     return result;
 }
 
-void DealJson::makeJsonFile(std::string filepath) {
+void DealJson::makeJsonFile(std::string filepath, std::string ncode, std::string of) {
     
     // expected out
     //    {
@@ -66,9 +66,16 @@ void DealJson::makeJsonFile(std::string filepath) {
     picojson::object data;
     {
         data.emplace(std::make_pair("request_url", picojson::value("http://api.syosetu.com/novelapi/api/")));
-        data.emplace(std::make_pair("ncode", picojson::value("N2267BE")));
-        data.emplace(std::make_pair("of", picojson::value("l")));
-        data.emplace(std::make_pair("out", picojson::value("json")));
+        if(ncode.empty()) {
+            data.emplace(std::make_pair("ncode", picojson::value("N2267BE")));
+        } else {
+            data.emplace(std::make_pair("ncode", picojson::value(ncode)));
+        }
+        if(of.empty()) {
+            data.emplace(std::make_pair("of", picojson::value("l")));
+        } else {
+            data.emplace(std::make_pair("of", picojson::value(of)));
+        }
         license.emplace(std::make_pair("CurlSettings", picojson::value(data)));
     }
     
@@ -76,7 +83,5 @@ void DealJson::makeJsonFile(std::string filepath) {
     
     ofs << picojson::value(license) << std::endl;
     ofs.close();
-    
-    std::cout << picojson::value(license) << std::endl;
 }
 

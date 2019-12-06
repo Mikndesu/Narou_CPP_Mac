@@ -22,7 +22,7 @@ class DealJson {
     //std::array<std::string, 5>
     std::array<std::string, 4> readJsonFilefromLocal(std::string filepath);
     
-    void makeJsonFile(std::string filepath);
+    void makeJsonFile(std::string filepath, std::string ncode, std::string of);
     
 };
 

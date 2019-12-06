@@ -50,13 +50,11 @@ std::string cachepath = makeNeedFile();
 -(void) usecurlmain {
     
 //    ?out=json&of=l&ncode=N2267BE
-    std::cout << "a" << std::endl;
     std::string filepath = cachepath;
     filepath += "/settings.json";
     std::ifstream ifs(filepath);
     if(!ifs) {
-        dj.makeJsonFile(filepath);
-        std::cout << "b" << std::endl;
+        dj.makeJsonFile(filepath, "", "");
         ifs.close();
     }
     std::array<std::string, 4> value = dj.readJsonFilefromLocal(filepath);
