@@ -15,6 +15,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var timer = Timer()
     
     @IBOutlet weak var menu: NSMenu!
+    @IBOutlet weak var showLog: NSMenuItem!
+    @IBOutlet weak var deleteSettings: NSMenuItem!
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
@@ -26,11 +28,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         reloadItem.title = "Reload"
         reloadItem.action = #selector(AppDelegate.reload(_:))
         menu.addItem(reloadItem)
-        
-        let showItem = NSMenuItem()
-        showItem.title = "Show Log"
-        showItem.action = #selector(AppDelegate.showLog(_:))
-        menu.addItem(showItem)
         
         let quitItem = NSMenuItem()
         quitItem.title = "Quit Application"
@@ -45,6 +42,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 UseCurlMain.init().writelog("ReNew");
                 UseCurlMain.init().writelog(self.getDate());
                 UseCurlMain.init().writelog("\n");
+                self.notification()
             } else if (isReNew == 0) {
                 print("No ReNew")
                 UseCurlMain.init().writelog("No ReNew");
@@ -62,8 +60,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func notification() {
         let notification = NSUserNotification()
-        //Means "N"arou Update
-        notification.identifier = "n"
+        notification.identifier = "nn"
         notification.title = "ReNewal of NAROU"
         notification.informativeText = "ReNew!!!"
         notification.soundName = NSUserNotificationDefaultSoundName
@@ -79,12 +76,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             UseCurlMain.init().writelog("ReNew");
             UseCurlMain.init().writelog(self.getDate());
             UseCurlMain.init().writelog("\n");
+            self.notification()
         } else if (isReNew == 0) {
             print("No ReNew")
             UseCurlMain.init().writelog("No ReNew");
             UseCurlMain.init().writelog(self.getDate());
             UseCurlMain.init().writelog("\n");
         }
+    }
+    
+    @IBAction func showLogClick(_ sender: Any) {
+        UseCurlMain.init().showLog();
+    }
+    
+    @IBAction func deleteSettingsClick(_ sender: Any) {
+        UseCurlMain.init().deleteSettings();
     }
     
     func getDate() -> String {
@@ -100,11 +106,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return result
     }
     
-    @IBAction func showLog(_ sender: Any) {
-        UseCurlMain.init().showLog();
-        self.notification()
-    }
-    
     @IBAction func quit(_ sender: Any) {
         timer.invalidate()
         NSApplication.shared.terminate(self)
@@ -115,7 +116,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     private func userNotificationCenter(_ center: NSUserNotificationCenter, didActivate notification: NSUserNotification) -> Bool {
-
         return true
     }
 

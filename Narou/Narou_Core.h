@@ -16,7 +16,9 @@
 -(NSInteger) getIsReNew;
 -(void) usecurlmain;
 -(void) showLog;
--(void) writelog: (NSString *) contents;
+-(void) writelog:(NSString *) contents;
+-(void) rewriteJson:(NSString *) of ncode:(NSString *) ncode;
+-(void) deleteSettings;
 
 @end
 

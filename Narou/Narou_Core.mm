@@ -37,7 +37,7 @@ void writeLog(){}
 std::string makeNeedFile() {
     NSArray* array = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     NSString* cacheDirPath = [array objectAtIndex:0];
-    NSString* newCacheDirPath = [cacheDirPath stringByAppendingPathComponent:@"Settings_Narou"];
+    NSString* newCacheDirPath = [cacheDirPath stringByAppendingPathComponent:@"Narou"];
     NSFileManager* fileManager = [NSFileManager defaultManager];
     NSError* error = nil;
     BOOL created = [fileManager createDirectoryAtPath:(newCacheDirPath) withIntermediateDirectories:(YES) attributes:(nil) error:&error];
@@ -53,16 +53,25 @@ std::string cachepath = makeNeedFile();
 
 -(void) usecurlmain {
     
+//    ?out=json&of=l&ncode=N2267BE
     std::string filepath = cachepath;
-    filepath += "settings.json";
-    std::array<std::string, 2> value = dj.readJsonFilefromLocal(filepath);
-    
+    filepath += "/settings.json";
+    std::ifstream ifs(filepath);
+    if(!ifs) {
+        dj.makeJsonFile(filepath, "", "");
+        ifs.close();
+    }
+    std::array<std::string, 4> value = dj.readJsonFilefromLocal(filepath);
+    for(int i = 0; i < 4; i++) {
+        std::cout << value[i] << std::endl;
+    }
+    std::string url = value[3] + "?out=" + value[2] + "&of=" + value[1] + "&ncode=" + value[0];
+    std::cout << url << std::endl;
     Aboutcurl aboutcurl[] = {
-        {"Narou", value[0].c_str(), "Mozilla/5.0 (X11; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0"}
+        {"Narou", url.c_str(), "Mozilla/5.0 (X11; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0"}
     };
     
     docurl(aboutcurl[0]);
-    dj.makeJsonFile(filepath);
     
 }
 
@@ -83,6 +92,22 @@ std::string cachepath = makeNeedFile();
     std::string filepath = cachepath;
     filepath += "/logs.txt";
     command += filepath;
+    system(command.c_str());
+    writeLog("delete Settings.json");
+}
+
+-(void) rewriteJson:(NSString *) of ncode:(NSString *) ncode {
+    std::string filepath = cachepath;
+    filepath += "/settings.json";
+    dj.makeJsonFile(filepath, [ncode UTF8String], [of UTF8String]);
+}
+
+-(void) deleteSettings {
+    std::string command = "rm ";
+    std::string filepath = cachepath;
+    filepath += "/settings.json";
+    command += filepath;
+    std::cout << command << std::endl;
     system(command.c_str());
 }
 
