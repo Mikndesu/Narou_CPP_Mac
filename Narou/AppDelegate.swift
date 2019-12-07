@@ -115,7 +115,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     private func userNotificationCenter(_ center: NSUserNotificationCenter, didActivate notification: NSUserNotification) -> Bool {
-
         return true
     }
 
