@@ -15,6 +15,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var timer = Timer()
     
     @IBOutlet weak var menu: NSMenu!
+    @IBOutlet weak var showLog: NSMenuItem!
+    @IBOutlet weak var deleteSettings: NSMenuItem!
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
@@ -26,11 +28,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         reloadItem.title = "Reload"
         reloadItem.action = #selector(AppDelegate.reload(_:))
         menu.addItem(reloadItem)
-        
-        let showItem = NSMenuItem()
-        showItem.title = "Show Log"
-        showItem.action = #selector(AppDelegate.showLog(_:))
-        menu.addItem(showItem)
         
         let quitItem = NSMenuItem()
         quitItem.title = "Quit Application"
@@ -88,6 +85,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
+    @IBAction func showLogClick(_ sender: Any) {
+        UseCurlMain.init().showLog();
+    }
+    
+    @IBAction func deleteSettingsClick(_ sender: Any) {
+        UseCurlMain.init().deleteSettings();
+    }
+    
     func getDate() -> String {
         let date = Date()
 
@@ -99,10 +104,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         print( "現在時刻： ", result )
 
         return result
-    }
-    
-    @IBAction func showLog(_ sender: Any) {
-        UseCurlMain.init().showLog();
     }
     
     @IBAction func quit(_ sender: Any) {

@@ -89,12 +89,22 @@ std::string cachepath = makeNeedFile();
     filepath += "/logs.txt";
     command += filepath;
     system(command.c_str());
+    writeLog("delete Settings.json");
 }
 
 -(void) rewriteJson:(NSString *) of ncode:(NSString *) ncode {
     std::string filepath = cachepath;
     filepath += "/settings.json";
     dj.makeJsonFile(filepath, [ncode UTF8String], [of UTF8String]);
+}
+
+-(void) deleteSettings {
+    std::string command = "rm ";
+    std::string filepath = cachepath;
+    filepath += "/settings.json";
+    command += filepath;
+    std::cout << command << std::endl;
+    system(command.c_str());
 }
 
 void writeLog(std::string contents) {

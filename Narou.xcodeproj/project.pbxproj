@@ -128,10 +128,10 @@
 			isa = PBXGroup;
 			children = (
 				7B5E05382388B72200A2712F /* AppDelegate.swift */,
-				7B7C09B4239B22BE001701B8 /* PreferViewController.swift */,
 				7B5E05672388B7E000A2712F /* Narou_Core.mm */,
 				7BF75BCF239814F4000CCE96 /* DealJson.cpp */,
 				7BF75BD0239814F4000CCE96 /* DealJson.hpp */,
+				7B7C09B4239B22BE001701B8 /* PreferViewController.swift */,
 				7B5E05682388B7E100A2712F /* Narou_Core.h */,
 				7B5E053C2388B72600A2712F /* Assets.xcassets */,
 				7B5E053E2388B72600A2712F /* Main.storyboard */,

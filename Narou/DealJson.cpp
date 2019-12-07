@@ -50,6 +50,8 @@ std::array<std::string, 4> DealJson::readJsonFilefromLocal(std::string filepath)
 void DealJson::makeJsonFile(std::string filepath, std::string ncode, std::string of) {
     
     // expected out
+    //    https://tools.m-bsys.com/development_tooles/json-beautifier.php
+    //
     //    {
     //        "CurlSettings": {
     //            "ncode": "N2267BE",
@@ -66,6 +68,7 @@ void DealJson::makeJsonFile(std::string filepath, std::string ncode, std::string
     picojson::object data;
     {
         data.emplace(std::make_pair("request_url", picojson::value("http://api.syosetu.com/novelapi/api/")));
+        data.emplace(std::make_pair("out", picojson::value("json")));
         if(ncode.empty()) {
             data.emplace(std::make_pair("ncode", picojson::value("N2267BE")));
         } else {

@@ -676,17 +676,38 @@
                 </application>
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Narou" customModuleProvider="target">
                     <connections>
+                        <outlet property="deleteSettings" destination="1yK-hv-twI" id="Jzf-zk-GTD"/>
                         <outlet property="menu" destination="r2K-E0-3ET" id="I5f-Ib-dOR"/>
+                        <outlet property="showLog" destination="jUO-tp-HO7" id="GU9-m6-oza"/>
                     </connections>
                 </customObject>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <menu id="r2K-E0-3ET">
                     <items>
-                        <menuItem title="Preferences" id="ojO-aM-zDe">
+                        <menuItem title="Preferences" id="qnG-05-lxO">
                             <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <segue destination="dxn-Xs-l4g" kind="show" id="Gro-fK-Sxz"/>
-                            </connections>
+                            <menu key="submenu" title="Preferences" id="qDi-C5-U4k">
+                                <items>
+                                    <menuItem title="Open Window" id="QT5-KF-WOR">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <connections>
+                                            <segue destination="dxn-Xs-l4g" kind="show" id="byI-dN-NEW"/>
+                                        </connections>
+                                    </menuItem>
+                                    <menuItem title="ShowLog" id="jUO-tp-HO7">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <connections>
+                                            <action selector="showLogClick:" target="Voe-Tx-rLC" id="z8B-jj-cFo"/>
+                                        </connections>
+                                    </menuItem>
+                                    <menuItem title="Delete Settings" id="1yK-hv-twI">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <connections>
+                                            <action selector="deleteSettingsClick:" target="Voe-Tx-rLC" id="fgo-c3-9ea"/>
+                                        </connections>
+                                    </menuItem>
+                                </items>
+                            </menu>
                         </menuItem>
                     </items>
                 </menu>
