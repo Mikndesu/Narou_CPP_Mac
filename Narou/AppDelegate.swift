@@ -37,12 +37,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         timer = Timer.scheduledTimer(withTimeInterval: 3600, repeats: true, block: { (timer) in
             UseCurlMain.init().usecurlmain()
             let isReNew = UseCurlMain.init().getIsReNew()
+            let novelname = UseCurlMain.init().getnovelname()
             if(isReNew == 1) {
                 print("ReNew")
                 UseCurlMain.init().writelog("ReNew");
                 UseCurlMain.init().writelog(self.getDate());
                 UseCurlMain.init().writelog("\n");
-                self.notification()
+                self.notification(n_id: novelname!)
             } else if (isReNew == 0) {
                 print("No ReNew")
                 UseCurlMain.init().writelog("No ReNew");
@@ -58,9 +59,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to tear down your application
     }
     
-    func notification() {
+    func notification(n_id: String) {
         let notification = NSUserNotification()
-        notification.identifier = "nn"
+        notification.identifier = n_id + "s"
         notification.title = "ReNewal of NAROU"
         notification.informativeText = "ReNew!!!"
         notification.soundName = NSUserNotificationDefaultSoundName
@@ -70,18 +71,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBAction func reload(_ sender: Any) {
         UseCurlMain.init().usecurlmain()
+        let novelname = UseCurlMain.init().getnovelname()!
         let isReNew = UseCurlMain.init().getIsReNew()
         if(isReNew == 1) {
             print("ReNew")
             UseCurlMain.init().writelog("ReNew");
             UseCurlMain.init().writelog(self.getDate());
             UseCurlMain.init().writelog("\n");
-            self.notification()
+            self.notification(n_id: novelname)
         } else if (isReNew == 0) {
             print("No ReNew")
             UseCurlMain.init().writelog("No ReNew");
             UseCurlMain.init().writelog(self.getDate());
             UseCurlMain.init().writelog("\n");
+            print(novelname)
         }
     }
     

@@ -22,6 +22,7 @@
 @implementation UseCurlMain
 
 NSInteger isReNew;
+NSMutableString* novelname = [NSMutableString string];
 
 DealJson dj;
 
@@ -85,6 +86,10 @@ std::string cachepath = makeNeedFile();
 //Receive Value to AppDelegate.Swift
 -(NSInteger) getIsReNew {
     return isReNew;
+}
+
+-(NSString* ) getnovelname {
+    return novelname;
 }
 
 -(void) showLog {
@@ -162,21 +167,22 @@ void renewCheck(std::string contents, std::string filepath) {
     if(a < b) {
         //Here means there are new Renewals
         isReNew = 1;
+        novelname = [NSMutableString stringWithString:@"ReZero"];
         std::cout << "a<b" << std::endl;
         writeLog(words, next_words, "a<b");
     } else if(a == b) {
         //Here means there is no Renewals
         isReNew = 0;
+        novelname = [NSMutableString stringWithString:@"ReZero"];
         std::cout << "a==b" << std::endl;
         writeLog(words, next_words, "a==b");
-//        writeLog("a=b");
     }
 }
 
 //A Method for Executing CURL
 void docurl(const Aboutcurl aboutcurl) {
 
-    CURL * curl;
+    CURL *curl;
     CURLcode ret;
     curl = curl_easy_init();
     std::string chunk;

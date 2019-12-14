@@ -14,6 +14,7 @@
 @interface UseCurlMain : NSObject
 
 -(NSInteger) getIsReNew;
+-(NSString *) getnovelname;
 -(void) usecurlmain;
 -(void) showLog;
 -(void) writelog:(NSString *) contents;
