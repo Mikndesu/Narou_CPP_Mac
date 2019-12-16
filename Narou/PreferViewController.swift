@@ -24,7 +24,7 @@ class PreferViewController: NSViewController {
         let of = offield.stringValue
         print(ncode)
         print(of)
-        UseCurlMain.init().rewriteJson(of, ncode: ncode)
+        OnClickFun.init().rewriteJson(of, ncode: ncode)
 //        self.dismiss(self)
     }
     
