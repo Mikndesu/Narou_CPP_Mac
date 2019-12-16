@@ -50,6 +50,7 @@ std::array<std::string, 4> DealJson::readJsonFilefromLocal(std::string filepath)
 void DealJson::makeJsonFile(std::string filepath, std::string ncode, std::string of) {
     
     // expected out
+    //    
     //    https://tools.m-bsys.com/development_tooles/json-beautifier.php
     //
     //    {
@@ -87,4 +88,3 @@ void DealJson::makeJsonFile(std::string filepath, std::string ncode, std::string
     ofs << picojson::value(license) << std::endl;
     ofs.close();
 }
-

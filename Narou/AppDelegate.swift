@@ -36,8 +36,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         timer = Timer.scheduledTimer(withTimeInterval: 3600, repeats: true, block: { (timer) in
             UseCurlMain.init().usecurlmain()
-            let isReNew = UseCurlMain.init().getIsReNew()
-            let novelname = UseCurlMain.init().getnovelname()
+            let isReNew = OnClickFun.init().getIsReNew()
+            let novelname = OnClickFun.init().getnovelname()
             if(isReNew == 1) {
                 print("ReNew")
                 UseCurlMain.init().writelog("ReNew");
@@ -71,8 +71,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBAction func reload(_ sender: Any) {
         UseCurlMain.init().usecurlmain()
-        let novelname = UseCurlMain.init().getnovelname()!
-        let isReNew = UseCurlMain.init().getIsReNew()
+        let novelname = OnClickFun.init().getnovelname()!
+        let isReNew = OnClickFun.init().getIsReNew()
         if(isReNew == 1) {
             print("ReNew")
             UseCurlMain.init().writelog("ReNew");
@@ -89,11 +89,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @IBAction func showLogClick(_ sender: Any) {
-        UseCurlMain.init().showLog();
+        OnClickFun.init().showLog();
     }
     
     @IBAction func deleteSettingsClick(_ sender: Any) {
-        UseCurlMain.init().deleteSettings();
+        OnClickFun.init().deleteSettings();
     }
     
     func getDate() -> String {

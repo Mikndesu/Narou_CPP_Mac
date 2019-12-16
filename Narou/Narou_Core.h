@@ -9,18 +9,23 @@
 #ifndef Narou_Core_h
 #define Narou_Core_h
 
+#ifdef __OBJC__
 #import <Foundation/Foundation.h>
-
 @interface UseCurlMain : NSObject
 
--(NSInteger) getIsReNew;
--(NSString *) getnovelname;
 -(void) usecurlmain;
--(void) showLog;
--(void) writelog:(NSString *) contents;
--(void) rewriteJson:(NSString *) of ncode:(NSString *) ncode;
--(void) deleteSettings;
-
+-(void) writelog:(NSString*) contents;
 @end
+#endif
+
+#ifdef __cplusplus
+#include <string>
+
+class Narou_Core {
+public:
+    std::string makeNeedFile();
+};
+
+#endif
 
 #endif /* Narou_Core_h */
