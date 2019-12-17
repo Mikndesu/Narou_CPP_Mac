@@ -98,14 +98,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func getDate() -> String {
         let date = Date()
-
+        
         let format = DateFormatter()
         format.dateFormat = "yyyy-MM-dd HH:mm"
         format.timeZone   = TimeZone(identifier: "Asia/Tokyo")
-
+        
         let result = format.string(from: date)
         print( "現在時刻： ", result )
-
+        
         return result
     }
     
@@ -117,11 +117,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func userNotificationCenter(_ center: NSUserNotificationCenter, shouldPresent notification: NSUserNotification) -> Bool {
         return true;
     }
-
+    
     private func userNotificationCenter(_ center: NSUserNotificationCenter, didActivate notification: NSUserNotification) -> Bool {
         return true
     }
-
+    
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
         return false
     }

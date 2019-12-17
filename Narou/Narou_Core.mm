@@ -30,10 +30,10 @@ struct Aboutcurl {
     const char* useragent;
 };
 
-    const std::string rootpath = nc.makeNeedFile();
-    const std::string logpath = rootpath + "/log.txt";
-    const std::string datapath = rootpath + "/data.json";
-    const std::string settingspath = rootpath + "/settings.json";
+const std::string rootpath = nc.makeNeedFile();
+const std::string logpath = rootpath + "/log.txt";
+const std::string datapath = rootpath + "/data.json";
+const std::string settingspath = rootpath + "/settings.json";
 
 void writeLog(){}
 
@@ -69,7 +69,7 @@ void writeLog(Head&& head, Tail&&... tail) {
 }
 
 -(void) usecurlmain {
-//    ?out=json&of=l&ncode=N2267BE
+    //    ?out=json&of=l&ncode=N2267BE
     std::ifstream ifs(settingspath);
     if(!ifs) {
         dj.makeJsonFile(settingspath, "", "");
@@ -87,7 +87,6 @@ void writeLog(Head&& head, Tail&&... tail) {
     };
     
     docurl(aboutcurl[0]);
-    
 }
 
 //C++ Method Wrapper for ObjC & Swift
@@ -126,7 +125,7 @@ void renewCheck(std::string contents, std::string filepath) {
     } else {
         after = std::stoi(next_words);
     }
-       
+    
     ofs << next_words << std::endl;
     ofs.close();
     
@@ -139,9 +138,9 @@ void renewCheck(std::string contents, std::string filepath) {
         writeLog(words, next_words, "a<b");
     } else if(before == after) {
         //Here means there is no Renewals
-//        isReNew = 0;
+        //        isReNew = 0;
         ocf.setisReNew(0);
-//        novelname = [NSMutableString stringWithString:@"ReZero"];
+        //        novelname = [NSMutableString stringWithString:@"ReZero"];
         ocf.setnovelname(novelname);
         std::cout << "a==b" << std::endl;
         writeLog(words, next_words, "a==b");
@@ -150,7 +149,7 @@ void renewCheck(std::string contents, std::string filepath) {
 
 //A Method for Executing CURL
 void docurl(const Aboutcurl aboutcurl) {
-
+    
     CURL *curl;
     CURLcode ret;
     curl = curl_easy_init();
@@ -159,7 +158,7 @@ void docurl(const Aboutcurl aboutcurl) {
     if(curl == NULL) {
         std::cerr << "curl_east_init() failed" << std::endl;
     }
-        
+    
     curl_easy_setopt(curl, CURLOPT_URL, aboutcurl.url);
     curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, callbackWrite);
     curl_easy_setopt(curl, CURLOPT_USERAGENT, aboutcurl.useragent);
@@ -176,13 +175,13 @@ void docurl(const Aboutcurl aboutcurl) {
     chunk.replace(0, 16, "");
     chunk.insert(10, "\"");
     chunk.insert(18, "\"");
-
+    
     renewCheck(chunk, datapath);
     std::cout << chunk << std::endl;
 }
 
-size_t callbackWrite(char *ptr, size_t size, size_t nmemb, std::string * stream) {
-    int datalength = size * nmemb;
+size_t callbackWrite(char *ptr, size_t size, size_t nmemb, std::string *stream) {
+    int datalength = (int)(size * nmemb);
     stream -> append(ptr, datalength);
     return datalength;
 }

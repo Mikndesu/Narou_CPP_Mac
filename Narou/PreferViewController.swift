@@ -9,11 +9,11 @@
 import Cocoa
 
 class PreferViewController: NSViewController {
-
+    
     @IBOutlet weak var ncodefield: NSTextField!
     @IBOutlet weak var offield: NSTextField!
     @IBOutlet weak var done: NSButton!
-//    UseCurlMain.init().writelog("\n");
+    //    UseCurlMain.init().writelog("\n");
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
@@ -25,7 +25,7 @@ class PreferViewController: NSViewController {
         print(ncode)
         print(of)
         OnClickFun.init().rewriteJson(of, ncode: ncode)
-//        self.dismiss(self)
+        //        self.dismiss(self)
     }
     
 }

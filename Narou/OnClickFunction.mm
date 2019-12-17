@@ -47,7 +47,6 @@ void OnClickFunction::setnovelname(NSMutableString* novelName) {
     filepath += "/logs.txt";
     command += filepath;
     system(command.c_str());
-    
     std::ofstream ofs;
     ofs.open(filepath, std::ios::app);
     if(!ofs) {
