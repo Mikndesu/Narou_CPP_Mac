@@ -41,10 +41,6 @@
 
 /* Begin PBXFileReference section */
 		7B12076423900645006129F1 /* Cookie.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cookie.txt; sourceTree = "<group>"; };
-		7B43C704238CB634001807DA /* libboost_iostreams.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_iostreams.a; path = ../../../../usr/local/Cellar/boost/1.71.0/lib/libboost_iostreams.a; sourceTree = "<group>"; };
-		7B43C709238CB645001807DA /* libboost_iostreams-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_iostreams-mt.dylib"; path = "../../../../usr/local/Cellar/boost/1.71.0/lib/libboost_iostreams-mt.dylib"; sourceTree = "<group>"; };
-		7B4B9E8E238CA9A300614BF7 /* libboost_iostreams.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_iostreams.dylib; path = ../../../../usr/local/Cellar/boost/1.71.0/lib/libboost_iostreams.dylib; sourceTree = "<group>"; };
-		7B4B9E92238CABA400614BF7 /* libboost_iostreams-mt.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libboost_iostreams-mt.a"; path = "../../../../usr/local/Cellar/boost/1.71.0/lib/libboost_iostreams-mt.a"; sourceTree = "<group>"; };
 		7B5E05352388B72200A2712F /* Narou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Narou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B5E05382388B72200A2712F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B5E053A2388B72200A2712F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -99,10 +95,6 @@
 		7B4B9E8D238CA9A300614BF7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7B43C709238CB645001807DA /* libboost_iostreams-mt.dylib */,
-				7B43C704238CB634001807DA /* libboost_iostreams.a */,
-				7B4B9E92238CABA400614BF7 /* libboost_iostreams-mt.a */,
-				7B4B9E8E238CA9A300614BF7 /* libboost_iostreams.dylib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

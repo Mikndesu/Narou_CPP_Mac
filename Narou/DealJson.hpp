@@ -17,17 +17,17 @@ class DealJson {
     
     public :
     
-    std::string readJsonFilefromInternet(const char* contents);
+    std::string readWordsfromInternet(std::string jsonobj);
     
-    std::string readWords(std::string jsonobj);
+    std::string readWordsfromLocal(std::string filepath, std::string novelName);
     
-    std::array<std::string, 3> readSettingsJsonFilefromLocal(std::string filepath);
+    std::string readSettingsJsonFile(std::string filepath, std::string novelName);
     
-    void makeSettingsJsonFile(std::string filepath, std::string ncode);
+    void makeSettingsJsonFile(std::string filepath);
     
     void saveWords(std::string filepath, std::string novelName, std::string words);
     
-    void addNovels(std::string filepath, std::string valueName, std::string value);
+    void addNovels(std::string filepath, std::string novelName, std::string value);
 };
 
 #endif /* DealJson_hpp */

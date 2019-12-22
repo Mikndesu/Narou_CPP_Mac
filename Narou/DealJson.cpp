@@ -14,21 +14,20 @@
 #include "picojson.h"
 
 #define CONTENTS_FROMPATH(filepath, contents, v, err) do {std::ifstream ifs; ifs.open(filepath, std::ios::in); std::getline(ifs, contents); ifs.close(); picojson::parse(v, contents.c_str(), contents.c_str() + strlen(contents.c_str()), &err);} while(0)
-//Caution Deprecated please use readWords instead of this
-std::string DealJson::readJsonFilefromInternet(const char* contents) {
-    picojson::value v;
-    std::string err;
-    picojson::parse(v, contents, contents + strlen(contents), &err);
-    if (err.empty())
-    {
-        picojson::object& o = v.get<picojson::object>();
-        return o["length"].get<std::string>();
-    }
-    return "";
+
+void makeDatas(std::string filepath, std::string name, std::string value) {
+    std::ofstream ofs;
+    ofs.open(filepath, std::ios::app);
+    picojson::array array;
+    picojson::object object;
+    object.emplace(std::make_pair(name, picojson::value(value)));
+    array.push_back(picojson::value(object));
+    ofs << picojson::value(array) << std::endl;
+    ofs.close();
 }
 
 //A General Method instead of readJsonFilefromInternet
-std::string DealJson::readWords(std::string jsonobj) {
+std::string DealJson::readWordsfromInternet(std::string jsonobj) {
     picojson::value v;
     std::string err, words;
     picojson::parse(v, jsonobj.c_str(), jsonobj.c_str() + strlen(jsonobj.c_str()), &err);
@@ -47,47 +46,58 @@ std::string DealJson::readWords(std::string jsonobj) {
     return words;
 }
 
-//in Progress
-std::array<std::string, 3> DealJson::readSettingsJsonFilefromLocal(std::string filepath) {
+std::string DealJson::readWordsfromLocal(std::string filepath, std::string novelName) {
+    picojson::value v;
+    std::string err, jsonobj, check;
+    std::ifstream i;
+    i.open(filepath, std::ios::in);
+    std::getline(i, check);
+    if(check.empty()) {
+        return "";
+    }
+    CONTENTS_FROMPATH(filepath, jsonobj, v, err);
+    if(err.empty()) {
+        picojson::array& array = v.get<picojson::array>();
+        for(auto it = array.begin(); it != array.end(); it++) {
+            picojson::object o = it->get<picojson::object>();
+            return o[novelName].get<std::string>();
+        }
+    }
+    return nullptr;
+}
+
+std::string DealJson::readSettingsJsonFile(std::string filepath, std::string novelName) {
     picojson::value v;
     std::string err, jsonobj;
     CONTENTS_FROMPATH(filepath, jsonobj, v, err);
-    std::array<std::string, 3> result;
     if(err.empty()) {
         picojson::object& o = v.get<picojson::object>();
-        picojson::object& e = o["CurlSettings"].get<picojson::object>();
-        result[0] = e["ncode"].get<std::string>();
-        result[1] = e["out"].get<std::string>();
-        result[2] = e["request_url"].get<std::string>();
+        return o[novelName].get<std::string>();
     }
-    return result;
+    return nullptr;
 }
 
-void DealJson::makeSettingsJsonFile(std::string filepath, std::string ncode) {
-
+void DealJson::makeSettingsJsonFile(std::string filepath) {
     std::ofstream ofs;
     ofs.open(filepath, std::ios::out);
-    
     picojson::object obj;
-    picojson::object data;
     {
-        data.emplace(std::make_pair("request_url", picojson::value("http://api.syosetu.com/novelapi/api/")));
-        data.emplace(std::make_pair("out", picojson::value("json")));
-        if(ncode.empty()) {
-            data.emplace(std::make_pair("ncode", picojson::value("N2267BE")));
-        } else {
-            data.emplace(std::make_pair("ncode", picojson::value(ncode)));
-        }
-        obj.emplace(std::make_pair("CurlSettings", picojson::value(data)));
+        obj.emplace(std::make_pair("ReZero", picojson::value("N2267BE")));
     }
-    
     ofs << picojson::value(obj) << std::endl;
     ofs.close();
 }
 
 void DealJson::saveWords(std::string filepath, std::string novelName, std::string words) {
-    std::string err, jsonobj;
+    std::string err, jsonobj, check;
     picojson::value v;
+    std::ifstream i;
+    i.open(filepath, std::ios::in);
+    std::getline(i, check);
+    i.close();
+    if(check.empty()) {
+        makeDatas(filepath, novelName, words);
+    }
     CONTENTS_FROMPATH(filepath, jsonobj, v, err);
     if(err.empty()) {
         std::map<std::string, std::string> jsonmap;
@@ -107,9 +117,16 @@ void DealJson::saveWords(std::string filepath, std::string novelName, std::strin
     }
 }
 
-void DealJson::addNovels(std::string filepath, std::string valueName, std::string value) {
-    std::string err, jsonobj;
+void DealJson::addNovels(std::string filepath, std::string novelName, std::string value) {
+    std::string err, jsonobj, check;
     picojson::value v;
+    std::ifstream i;
+    i.open(filepath, std::ios::in);
+    std::getline(i, check);
+    i.close();
+    if(check.empty()) {
+        makeDatas(filepath, novelName, value);
+    }
     CONTENTS_FROMPATH(filepath, jsonobj, v, err);
     if(err.empty()) {
         std::map<std::string, std::string> jsonmap;
@@ -120,10 +137,10 @@ void DealJson::addNovels(std::string filepath, std::string valueName, std::strin
                 jsonmap.insert(std::make_pair(ite->first, ite->second.to_str()));
                 std::cout << ite->first << ":" << ite->second.to_str() << std::endl;
                 if(it == array.end() - 1) {
-                    int c = static_cast<int>(jsonmap.count(valueName));
+                    int c = static_cast<int>(jsonmap.count(novelName));
                     if(c == 0) {
                         picojson::object obj;
-                        obj.emplace(std::make_pair(valueName, picojson::value(value)));
+                        obj.emplace(std::make_pair(novelName, picojson::value(value)));
                         array.push_back(picojson::value(obj));
                     }
                 }

@@ -69,17 +69,13 @@ void writeLog(Head&& head, Tail&&... tail) {
 }
 
 -(void) usecurlmain {
-    //    ?out=json&of=l&ncode=N2267BE
     std::ifstream ifs(settingspath);
     if(!ifs) {
-        dj.makeSettingsJsonFile(settingspath, "");
+        dj.makeSettingsJsonFile(settingspath);
         ifs.close();
     }
-    std::array<std::string, 3> value = dj.readSettingsJsonFilefromLocal(settingspath);
-    for(int i = 0; i < 3; i++) {
-        std::cout << value[i] << std::endl;
-    }
-    std::string url = value[2] + "?out=" + value[1] + "&of=l" + "&ncode=" + value[0];
+    std::string ncode = dj.readSettingsJsonFile(settingspath, "ReZero");
+    std::string url = "http://api.syosetu.com/novelapi/api/?out=json&of=l&ncode=" + ncode;
     std::cout << url << std::endl;
     Aboutcurl aboutcurl[] = {
         {"Narou", url.c_str(), "Mozilla/5.0 (X11; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0"}
@@ -98,11 +94,7 @@ void writeLog(Head&& head, Tail&&... tail) {
 void renewCheck(std::string wordsfromInternet, std::string filepath) {
     int before,after;
     
-    std::ifstream ifs(filepath);
-    //the novels words to get ReNewal Info
-    std::string words;
-    std::getline(ifs, words);
-    ifs.close();
+    std::string words = dj.readWordsfromLocal(filepath, "ReZero");
     
     if(words.empty()) {
         before = 0;
@@ -110,8 +102,7 @@ void renewCheck(std::string wordsfromInternet, std::string filepath) {
         before = std::stoi(words);
     }
     
-    std::ofstream ofs;
-    ofs.open(filepath, std::ios::out);
+    std::cout << before << std::endl;
     
     std::string next_words = wordsfromInternet;
     
@@ -121,8 +112,7 @@ void renewCheck(std::string wordsfromInternet, std::string filepath) {
         after = std::stoi(next_words);
     }
     
-    ofs << next_words << std::endl;
-    ofs.close();
+    dj.saveWords(filepath, "ReZero", next_words);
     
     NSMutableString* novelname = [NSMutableString stringWithString:@"ReZero"];
     compareCheck(before, after, novelname, words, next_words);
@@ -170,7 +160,7 @@ void docurl(const Aboutcurl aboutcurl) {
     }
     
     std::cout << chunk << std::endl;
-    std::string words = dj.readWords(chunk);
+    std::string words = dj.readWordsfromInternet(chunk);
     std::cout << words << std::endl;
     renewCheck(words, datapath);
 }

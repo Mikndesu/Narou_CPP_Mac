@@ -10,15 +10,19 @@
 		"request_url": "http://api.syosetu.com/novelapi/api/"
 	}
 }
+↓
+{
+	"ReZero": "N2267BE",
+	"Others" : "XXXXXX",
+}
 ~~~
 ## Data.json
 
 ~~~
-[
 	{
-		"ReZero" : "5608405"
+		"ReZero" : "5608405",
+		"Others"  : "30022"
 	}
-]
 ~~~
 
 ## log.txt
