@@ -56,10 +56,10 @@ void OnClickFunction::setnovelname(NSMutableString* novelName) {
     ofs.close();
 }
 
--(void) rewriteJson:(NSString *) of ncode:(NSString *) ncode {
+-(void) rewriteJson:(NSString *) ncode {
     std::string filepath = cachePath;
     filepath += "/settings.json";
-    dJ.makeJsonFile(filepath, [ncode UTF8String], [of UTF8String]);
+    dJ.makeSettingsJsonFile(filepath, [ncode UTF8String]);
 }
 
 -(void) deleteSettings {

@@ -17,7 +17,7 @@
 -(NSInteger) getIsReNew;
 -(NSString *) getnovelname;
 -(void) showLog;
--(void) rewriteJson:(NSString *) of ncode:(NSString *) ncode;
+-(void) rewriteJson:(NSString *) ncode;
 -(void) deleteSettings;
 
 @end

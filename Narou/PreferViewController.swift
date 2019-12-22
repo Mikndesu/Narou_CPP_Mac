@@ -21,10 +21,8 @@ class PreferViewController: NSViewController {
     
     @IBAction func doneclick(_ sender: Any) {
         let ncode = ncodefield.stringValue
-        let of = offield.stringValue
         print(ncode)
-        print(of)
-        OnClickFun.init().rewriteJson(of, ncode: ncode)
+        OnClickFun.init().rewriteJson(ncode)
         //        self.dismiss(self)
     }
     

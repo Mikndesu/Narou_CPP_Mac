@@ -19,16 +19,15 @@ class DealJson {
     
     std::string readJsonFilefromInternet(const char* contents);
     
-    std::string readWords(std::string novelName);
+    std::string readWords(std::string jsonobj);
     
-    //std::array<std::string, 5>
-    std::array<std::string, 4> readJsonFilefromLocal(std::string filepath);
+    std::array<std::string, 3> readSettingsJsonFilefromLocal(std::string filepath);
     
-    void makeJsonFile(std::string filepath, std::string ncode, std::string of);
+    void makeSettingsJsonFile(std::string filepath, std::string ncode);
     
     void saveWords(std::string filepath, std::string novelName, std::string words);
     
-    void addNovels(std::string novelname);
+    void addNovels(std::string filepath, std::string valueName, std::string value);
 };
 
 #endif /* DealJson_hpp */

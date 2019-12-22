@@ -72,20 +72,18 @@ void writeLog(Head&& head, Tail&&... tail) {
     //    ?out=json&of=l&ncode=N2267BE
     std::ifstream ifs(settingspath);
     if(!ifs) {
-        dj.makeJsonFile(settingspath, "", "");
+        dj.makeSettingsJsonFile(settingspath, "");
         ifs.close();
     }
-    
-    std::array<std::string, 4> value = dj.readJsonFilefromLocal(settingspath);
-    for(int i = 0; i < 4; i++) {
+    std::array<std::string, 3> value = dj.readSettingsJsonFilefromLocal(settingspath);
+    for(int i = 0; i < 3; i++) {
         std::cout << value[i] << std::endl;
     }
-    std::string url = value[3] + "?out=" + value[2] + "&of=" + value[1] + "&ncode=" + value[0];
+    std::string url = value[2] + "?out=" + value[1] + "&of=l" + "&ncode=" + value[0];
     std::cout << url << std::endl;
     Aboutcurl aboutcurl[] = {
         {"Narou", url.c_str(), "Mozilla/5.0 (X11; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0"}
     };
-    
     docurl(aboutcurl[0]);
 }
 
@@ -96,15 +94,15 @@ void writeLog(Head&& head, Tail&&... tail) {
     writeLog(s);
 }
 
-void renewCheck(std::string contents, std::string filepath) {
-    
+//this words is from Internet
+void renewCheck(std::string wordsfromInternet, std::string filepath) {
     int before,after;
     
     std::ifstream ifs(filepath);
     //the novels words to get ReNewal Info
     std::string words;
     std::getline(ifs, words);
-    std::cout << words << std::endl;
+    ifs.close();
     
     if(words.empty()) {
         before = 0;
@@ -112,13 +110,10 @@ void renewCheck(std::string contents, std::string filepath) {
         before = std::stoi(words);
     }
     
-    ifs.close();
-    
     std::ofstream ofs;
     ofs.open(filepath, std::ios::out);
     
-    std::string next_words = dj.readJsonFilefromInternet(contents.c_str());
-    std::cout << next_words << std::endl;
+    std::string next_words = wordsfromInternet;
     
     if(next_words.empty()) {
         after = 0;
@@ -130,18 +125,21 @@ void renewCheck(std::string contents, std::string filepath) {
     ofs.close();
     
     NSMutableString* novelname = [NSMutableString stringWithString:@"ReZero"];
+    compareCheck(before, after, novelname, words, next_words);
+}
+
+void compareCheck(int before, int after, NSMutableString* novelName, std::string words, std::string next_words) {
     if(before < after) {
         //Here means there are new Renewals
         ocf.setisReNew(1);
-        ocf.setnovelname(novelname);
+        ocf.setnovelname(novelName);
         std::cout << "a<b" << std::endl;
         writeLog(words, next_words, "a<b");
     } else if(before == after) {
         //Here means there is no Renewals
         //        isReNew = 0;
         ocf.setisReNew(0);
-        //        novelname = [NSMutableString stringWithString:@"ReZero"];
-        ocf.setnovelname(novelname);
+        ocf.setnovelname(novelName);
         std::cout << "a==b" << std::endl;
         writeLog(words, next_words, "a==b");
     }
@@ -171,17 +169,14 @@ void docurl(const Aboutcurl aboutcurl) {
         std::cerr << "curl_easy_perform() failed." << std::endl;
     }
     
-    chunk.replace(34, 1, "");
-    chunk.replace(0, 16, "");
-    chunk.insert(10, "\"");
-    chunk.insert(18, "\"");
-    
-    renewCheck(chunk, datapath);
     std::cout << chunk << std::endl;
+    std::string words = dj.readWords(chunk);
+    std::cout << words << std::endl;
+    renewCheck(words, datapath);
 }
 
 size_t callbackWrite(char *ptr, size_t size, size_t nmemb, std::string *stream) {
-    int datalength = (int)(size * nmemb);
+    int datalength = static_cast<int>(size * nmemb);
     stream -> append(ptr, datalength);
     return datalength;
 }
