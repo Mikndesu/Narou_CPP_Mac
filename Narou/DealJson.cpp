@@ -10,6 +10,7 @@
 #include <string>
 #include <array>
 #include <fstream>
+#include <vector>
 #include <iostream>
 #include "picojson.h"
 
@@ -66,15 +67,18 @@ std::string DealJson::readWordsfromLocal(std::string filepath, std::string novel
     return nullptr;
 }
 
-std::string DealJson::readSettingsJsonFile(std::string filepath, std::string novelName) {
+std::map<std::string, std::string> DealJson::readSettingsJsonFile(std::string filepath) {
     picojson::value v;
     std::string err, jsonobj;
+    std::map<std::string, std::string> names;
     CONTENTS_FROMPATH(filepath, jsonobj, v, err);
     if(err.empty()) {
         picojson::object& o = v.get<picojson::object>();
-        return o[novelName].get<std::string>();
+        for(auto it = o.begin(); it != o.end(); it++) {
+            names.insert(std::make_pair(it->first, it->second.to_str()));
+        }
     }
-    return nullptr;
+    return names;
 }
 
 void DealJson::makeSettingsJsonFile(std::string filepath) {

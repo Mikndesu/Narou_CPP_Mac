@@ -28,7 +28,7 @@
 class OnClickFunction {
 public:
     void setisReNew(NSInteger IsReNew);
-    void setnovelname(NSMutableString* novelName);
+    void setnovelname(NSString* novelName);
 };
 
 #endif

@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include <array>
+#include <map>
 #include <string>
 
 class DealJson {
@@ -21,7 +22,7 @@ class DealJson {
     
     std::string readWordsfromLocal(std::string filepath, std::string novelName);
     
-    std::string readSettingsJsonFile(std::string filepath, std::string novelName);
+    std::map<std::string, std::string> readSettingsJsonFile(std::string filepath);
     
     void makeSettingsJsonFile(std::string filepath);
     

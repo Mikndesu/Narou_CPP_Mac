@@ -28,7 +28,7 @@ void OnClickFunction::setisReNew(NSInteger IsReNew) {
     isReNew = IsReNew;
 }
 
-void OnClickFunction::setnovelname(NSMutableString* novelName) {
+void OnClickFunction::setnovelname(NSString* novelName) {
     novelname = novelName;
 }
 
