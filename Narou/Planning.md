@@ -1,28 +1,14 @@
 # Save Data File Format Example
 
-## Settings.json
-
+##Settings.json
 ~~~
+Settings.json
 {
-	"CurlSettings": {
-		"ncode": "N2267BE",
-		"out": "json",
-		"request_url": "http://api.syosetu.com/novelapi/api/"
+	"ReZero" : {
+		"ncode" : ""
+		"words" : ""
 	}
 }
-↓
-{
-	"ReZero": "N2267BE",
-	"Others" : "XXXXXX",
-}
-~~~
-## Data.json
-
-~~~
-	{
-		"ReZero" : "5608405",
-		"Others"  : "30022"
-	}
 ~~~
 
 ## log.txt
@@ -40,10 +26,4 @@ No ReNew
 a==b
 No ReNew
 2019-12-17 15:29
-~~~
-
-## novels.txt
-
-~~~
-Write Here Novel Numbers
 ~~~

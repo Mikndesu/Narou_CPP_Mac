@@ -37,18 +37,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         timer = Timer.scheduledTimer(withTimeInterval: 3600, repeats: true, block: { (timer) in
             UseCurlMain.init().usecurlmain()
             let isReNew = OnClickFun.init().getIsReNew()
-            let novelname = OnClickFun.init().getnovelname()
+            let novelname = OnClickFun.init().getnovelname() + "1"
+            print(novelname)
             if(isReNew == 1) {
                 print("ReNew")
                 UseCurlMain.init().writelog("ReNew");
                 UseCurlMain.init().writelog(self.getDate());
                 UseCurlMain.init().writelog("\n");
-                self.notification(n_id: novelname!)
+                self.notification(n_id: novelname)
+                print(novelname)
             } else if (isReNew == 0) {
                 print("No ReNew")
                 UseCurlMain.init().writelog("No ReNew");
                 UseCurlMain.init().writelog(self.getDate());
                 UseCurlMain.init().writelog("\n");
+                print(novelname)
             }
         })
     }
@@ -71,7 +74,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBAction func reload(_ sender: Any) {
         UseCurlMain.init().usecurlmain()
-        let novelname = OnClickFun.init().getnovelname()!
+        let novelname = OnClickFun.init().getnovelname() + "2"
         let isReNew = OnClickFun.init().getIsReNew()
         if(isReNew == 1) {
             print("ReNew")
@@ -79,6 +82,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             UseCurlMain.init().writelog(self.getDate());
             UseCurlMain.init().writelog("\n");
             self.notification(n_id: novelname)
+            print(novelname)
         } else if (isReNew == 0) {
             print("No ReNew")
             UseCurlMain.init().writelog("No ReNew");

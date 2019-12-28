@@ -70,11 +70,13 @@ void writeLog(Head&& head, Tail&&... tail) {
     }
     std::map<std::string, std::string> ncodes = dj.readSettingsJsonFile(settingspath);
     std::string url = "http://api.syosetu.com/novelapi/api/?out=json&of=l&ncode=";
+    std::string path;
+    std::cout << ncodes.size() << std::endl;
     for(auto it = ncodes.begin(); it != ncodes.end(); it++) {
-        std::string path = url + it->second;
-        docurl(path.c_str(), it->first.c_str());
-        std::cout << url << std::endl;
+        std::cout << it->first << std::endl;
+        docurl(url, it->second, it->first);
     }
+//    dj.addNovels(settingspath, "AAA", "N1443BP");
 }
 
 //C++ Method Wrapper for ObjC & Swift
@@ -130,19 +132,21 @@ void compareCheck(int before, int after, NSString* novelName, std::string words,
 }
 
 //A Method for Executing CURL
-void docurl(const char* url, std::string novelName) {
+void docurl(std::string url, std::string ncode, std::string novelName) {
     
     CURL *curl;
     CURLcode ret;
     curl = curl_easy_init();
-    std::string chunk;
+    std::string chunk, reqURL;
     const char* userAgent = "Mozilla/5.0 (X11; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0";
     
     if(curl == NULL) {
         std::cerr << "curl_east_init() failed" << std::endl;
     }
     
-    curl_easy_setopt(curl, CURLOPT_URL, url);
+    reqURL = url + ncode;
+    
+    curl_easy_setopt(curl, CURLOPT_URL, reqURL.c_str());
     curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, callbackWrite);
     curl_easy_setopt(curl, CURLOPT_USERAGENT, userAgent);
     //    curl_easy_setopt(curl, CURLOPT_COOKIE, thecookie);

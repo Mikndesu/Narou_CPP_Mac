@@ -66,6 +66,9 @@ void OnClickFunction::setnovelname(NSString* novelName) {
 }
 
 -(void) addNovelonGUI:(NSString *) novelname ncode:(NSString *) ncode {
+    std::string filepath = cachePath;
+    filepath += "/settings.json";
+    dJ.addNovels(filepath, [novelname UTF8String], [ncode UTF8String]);
 }
 
 @end
