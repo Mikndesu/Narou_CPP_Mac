@@ -124,8 +124,8 @@
 		7B5E05372388B72200A2712F /* Narou */ = {
 			isa = PBXGroup;
 			children = (
-				7B6AD8EC23A4F61600A4CC71 /* OnClickFunction.mm */,
 				7BF75BCF239814F4000CCE96 /* DealJson.cpp */,
+				7B6AD8EC23A4F61600A4CC71 /* OnClickFunction.mm */,
 				7B6AD8EE23A4F64100A4CC71 /* OnClickFunction.h */,
 				7B5E05672388B7E000A2712F /* Narou_Core.mm */,
 				7B5E05682388B7E100A2712F /* Narou_Core.h */,

@@ -73,7 +73,7 @@ void writeLog(Head&& head, Tail&&... tail) {
     std::string path;
     std::cout << ncodes.size() << std::endl;
     for(auto it = ncodes.begin(); it != ncodes.end(); it++) {
-        std::cout << it->first << std::endl;
+        std::cout << "Execute CURL" << std::endl;
         docurl(url, it->second, it->first);
     }
 //    dj.addNovels(settingspath, "AAA", "N1443BP");
@@ -90,15 +90,15 @@ void writeLog(Head&& head, Tail&&... tail) {
 void renewCheck(std::string wordsfromInternet, std::string novelName, std::string filepath) {
     int before,after;
     
+    std::cout << __LINE__ << std::endl;
+    //filepath should be datapath
     std::string words = dj.readWordsfromLocal(filepath, novelName);
-    
+
     if(words.empty()) {
         before = 0;
     } else {
         before = std::stoi(words);
     }
-    
-    std::cout << before << std::endl;
     
     std::string next_words = wordsfromInternet;
     
@@ -107,9 +107,7 @@ void renewCheck(std::string wordsfromInternet, std::string novelName, std::strin
     } else {
         after = std::stoi(next_words);
     }
-    
     dj.saveWords(filepath, novelName, next_words);
-    
     NSString* novelname = [NSString stringWithUTF8String:novelName.c_str()];
     compareCheck(before, after, novelname, words, next_words);
 }
@@ -119,14 +117,12 @@ void compareCheck(int before, int after, NSString* novelName, std::string words,
         //Here means there are new Renewals
         ocf.setisReNew(1);
         ocf.setnovelname(novelName);
-        std::cout << "a<b" << std::endl;
         writeLog(words, next_words, "a<b");
     } else if(before == after) {
         //Here means there is no Renewals
         //        isReNew = 0;
         ocf.setisReNew(0);
         ocf.setnovelname(novelName);
-        std::cout << "a==b" << std::endl;
         writeLog(words, next_words, "a==b");
     }
 }
@@ -162,6 +158,7 @@ void docurl(std::string url, std::string ncode, std::string novelName) {
     std::string words = dj.readWordsfromInternet(chunk);
     std::cout << words << std::endl;
     renewCheck(words, novelName, datapath);
+    std::cout << __LINE__ << std::endl;
 }
 
 size_t callbackWrite(char *ptr, size_t size, size_t nmemb, std::string *stream) {
