@@ -16,8 +16,9 @@
 		7B5E05572388B72600A2712F /* NarouUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5E05562388B72600A2712F /* NarouUITests.swift */; };
 		7B5E056A2388B7E100A2712F /* Narou_Core.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7B5E05672388B7E000A2712F /* Narou_Core.mm */; };
 		7B6AD8ED23A4F61600A4CC71 /* OnClickFunction.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7B6AD8EC23A4F61600A4CC71 /* OnClickFunction.mm */; };
-		7B7C09B5239B22BE001701B8 /* PreferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7C09B4239B22BE001701B8 /* PreferViewController.swift */; };
-		7BECD10623983FB400003BBD /* ReadMe.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7BECD10523983FB400003BBD /* ReadMe.txt */; };
+		7B6AD8F023ABA0ED00A4CC71 /* Planning.md in Resources */ = {isa = PBXBuildFile; fileRef = 7B6AD8EF23ABA0ED00A4CC71 /* Planning.md */; };
+		7BBAC57E23B0823500A2C33A /* AddNovelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBAC57D23B0823500A2C33A /* AddNovelsViewController.swift */; };
+		7BECD10623983FB400003BBD /* ReadMe.md in Resources */ = {isa = PBXBuildFile; fileRef = 7BECD10523983FB400003BBD /* ReadMe.md */; };
 		7BF75BD1239814F5000CCE96 /* DealJson.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7BF75BCF239814F4000CCE96 /* DealJson.cpp */; };
 /* End PBXBuildFile section */
 
@@ -40,10 +41,6 @@
 
 /* Begin PBXFileReference section */
 		7B12076423900645006129F1 /* Cookie.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cookie.txt; sourceTree = "<group>"; };
-		7B43C704238CB634001807DA /* libboost_iostreams.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_iostreams.a; path = ../../../../usr/local/Cellar/boost/1.71.0/lib/libboost_iostreams.a; sourceTree = "<group>"; };
-		7B43C709238CB645001807DA /* libboost_iostreams-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_iostreams-mt.dylib"; path = "../../../../usr/local/Cellar/boost/1.71.0/lib/libboost_iostreams-mt.dylib"; sourceTree = "<group>"; };
-		7B4B9E8E238CA9A300614BF7 /* libboost_iostreams.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_iostreams.dylib; path = ../../../../usr/local/Cellar/boost/1.71.0/lib/libboost_iostreams.dylib; sourceTree = "<group>"; };
-		7B4B9E92238CABA400614BF7 /* libboost_iostreams-mt.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libboost_iostreams-mt.a"; path = "../../../../usr/local/Cellar/boost/1.71.0/lib/libboost_iostreams-mt.a"; sourceTree = "<group>"; };
 		7B5E05352388B72200A2712F /* Narou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Narou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B5E05382388B72200A2712F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B5E053A2388B72200A2712F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,8 +60,9 @@
 		7B5E056B238BBD8600A2712F /* picojson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = picojson.h; sourceTree = "<group>"; };
 		7B6AD8EC23A4F61600A4CC71 /* OnClickFunction.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = OnClickFunction.mm; sourceTree = "<group>"; };
 		7B6AD8EE23A4F64100A4CC71 /* OnClickFunction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OnClickFunction.h; sourceTree = "<group>"; };
-		7B7C09B4239B22BE001701B8 /* PreferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferViewController.swift; sourceTree = "<group>"; };
-		7BECD10523983FB400003BBD /* ReadMe.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = ReadMe.txt; sourceTree = "<group>"; };
+		7B6AD8EF23ABA0ED00A4CC71 /* Planning.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Planning.md; sourceTree = "<group>"; };
+		7BBAC57D23B0823500A2C33A /* AddNovelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNovelsViewController.swift; sourceTree = "<group>"; };
+		7BECD10523983FB400003BBD /* ReadMe.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ReadMe.md; sourceTree = "<group>"; };
 		7BF75BCF239814F4000CCE96 /* DealJson.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DealJson.cpp; sourceTree = "<group>"; };
 		7BF75BD0239814F4000CCE96 /* DealJson.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DealJson.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -97,10 +95,6 @@
 		7B4B9E8D238CA9A300614BF7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7B43C709238CB645001807DA /* libboost_iostreams-mt.dylib */,
-				7B43C704238CB634001807DA /* libboost_iostreams.a */,
-				7B4B9E92238CABA400614BF7 /* libboost_iostreams-mt.a */,
-				7B4B9E8E238CA9A300614BF7 /* libboost_iostreams.dylib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -108,7 +102,7 @@
 		7B5E052C2388B72200A2712F = {
 			isa = PBXGroup;
 			children = (
-				7BECD10523983FB400003BBD /* ReadMe.txt */,
+				7BECD10523983FB400003BBD /* ReadMe.md */,
 				7B5E05372388B72200A2712F /* Narou */,
 				7B5E054A2388B72600A2712F /* NarouTests */,
 				7B5E05552388B72600A2712F /* NarouUITests */,
@@ -130,13 +124,13 @@
 		7B5E05372388B72200A2712F /* Narou */ = {
 			isa = PBXGroup;
 			children = (
+				7BF75BCF239814F4000CCE96 /* DealJson.cpp */,
 				7B6AD8EC23A4F61600A4CC71 /* OnClickFunction.mm */,
 				7B6AD8EE23A4F64100A4CC71 /* OnClickFunction.h */,
 				7B5E05672388B7E000A2712F /* Narou_Core.mm */,
 				7B5E05682388B7E100A2712F /* Narou_Core.h */,
-				7BF75BCF239814F4000CCE96 /* DealJson.cpp */,
 				7BF75BD0239814F4000CCE96 /* DealJson.hpp */,
-				7B7C09B4239B22BE001701B8 /* PreferViewController.swift */,
+				7BBAC57D23B0823500A2C33A /* AddNovelsViewController.swift */,
 				7B5E05382388B72200A2712F /* AppDelegate.swift */,
 				7B5E053C2388B72600A2712F /* Assets.xcassets */,
 				7B5E053E2388B72600A2712F /* Main.storyboard */,
@@ -146,6 +140,7 @@
 				7B5E05662388B7E000A2712F /* Narou-Bridging-Header.h */,
 				7B12076423900645006129F1 /* Cookie.txt */,
 				7B5E053A2388B72200A2712F /* ViewController.swift */,
+				7B6AD8EF23ABA0ED00A4CC71 /* Planning.md */,
 			);
 			path = Narou;
 			sourceTree = "<group>";
@@ -275,8 +270,9 @@
 			files = (
 				7B5E053D2388B72600A2712F /* Assets.xcassets in Resources */,
 				7B12076523900645006129F1 /* Cookie.txt in Resources */,
-				7BECD10623983FB400003BBD /* ReadMe.txt in Resources */,
+				7BECD10623983FB400003BBD /* ReadMe.md in Resources */,
 				7B5E05402388B72600A2712F /* Main.storyboard in Resources */,
+				7B6AD8F023ABA0ED00A4CC71 /* Planning.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,7 +300,7 @@
 				7B5E053B2388B72200A2712F /* ViewController.swift in Sources */,
 				7BF75BD1239814F5000CCE96 /* DealJson.cpp in Sources */,
 				7B5E056A2388B7E100A2712F /* Narou_Core.mm in Sources */,
-				7B7C09B5239B22BE001701B8 /* PreferViewController.swift in Sources */,
+				7BBAC57E23B0823500A2C33A /* AddNovelsViewController.swift in Sources */,
 				7B5E05392388B72200A2712F /* AppDelegate.swift in Sources */,
 				7B6AD8ED23A4F61600A4CC71 /* OnClickFunction.mm in Sources */,
 			);

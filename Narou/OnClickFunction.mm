@@ -28,7 +28,7 @@ void OnClickFunction::setisReNew(NSInteger IsReNew) {
     isReNew = IsReNew;
 }
 
-void OnClickFunction::setnovelname(NSMutableString* novelName) {
+void OnClickFunction::setnovelname(NSString* novelName) {
     novelname = novelName;
 }
 
@@ -47,7 +47,6 @@ void OnClickFunction::setnovelname(NSMutableString* novelName) {
     filepath += "/logs.txt";
     command += filepath;
     system(command.c_str());
-    
     std::ofstream ofs;
     ofs.open(filepath, std::ios::app);
     if(!ofs) {
@@ -57,12 +56,6 @@ void OnClickFunction::setnovelname(NSMutableString* novelName) {
     ofs.close();
 }
 
--(void) rewriteJson:(NSString *) of ncode:(NSString *) ncode {
-    std::string filepath = cachePath;
-    filepath += "/settings.json";
-    dJ.makeJsonFile(filepath, [ncode UTF8String], [of UTF8String]);
-}
-
 -(void) deleteSettings {
     std::string command = "rm ";
     std::string filepath = cachePath;
@@ -70,6 +63,12 @@ void OnClickFunction::setnovelname(NSMutableString* novelName) {
     command += filepath;
     std::cout << command << std::endl;
     system(command.c_str());
+}
+
+-(void) addNovelonGUI:(NSString *) novelname ncode:(NSString *) ncode {
+    std::string filepath = cachePath;
+    filepath += "/settings.json";
+    dJ.addNovels(filepath, [novelname UTF8String], [ncode UTF8String]);
 }
 
 @end

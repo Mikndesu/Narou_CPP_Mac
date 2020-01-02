@@ -24,16 +24,10 @@ DealJson dj;
 Narou_Core nc;
 OnClickFunction ocf;
 
-struct Aboutcurl {
-    const char* name;
-    const char* url;
-    const char* useragent;
-};
-
-    const std::string rootpath = nc.makeNeedFile();
-    const std::string logpath = rootpath + "/log.txt";
-    const std::string datapath = rootpath + "/data.json";
-    const std::string settingspath = rootpath + "/settings.json";
+const std::string rootpath = nc.makeNeedFile();
+const std::string logpath = rootpath + "/log.txt";
+const std::string datapath = rootpath + "/data.json";
+const std::string settingspath = rootpath + "/settings.json";
 
 void writeLog(){}
 
@@ -69,25 +63,20 @@ void writeLog(Head&& head, Tail&&... tail) {
 }
 
 -(void) usecurlmain {
-//    ?out=json&of=l&ncode=N2267BE
     std::ifstream ifs(settingspath);
     if(!ifs) {
-        dj.makeJsonFile(settingspath, "", "");
+        dj.makeSettingsJsonFile(settingspath);
         ifs.close();
     }
-    
-    std::array<std::string, 4> value = dj.readJsonFilefromLocal(settingspath);
-    for(int i = 0; i < 4; i++) {
-        std::cout << value[i] << std::endl;
+    std::map<std::string, std::string> ncodes = dj.readSettingsJsonFile(settingspath);
+    std::string url = "http://api.syosetu.com/novelapi/api/?out=json&of=l&ncode=";
+    std::string path;
+    std::cout << ncodes.size() << std::endl;
+    for(auto it = ncodes.begin(); it != ncodes.end(); it++) {
+        std::cout << "Execute CURL" << std::endl;
+        docurl(url, it->second, it->first);
     }
-    std::string url = value[3] + "?out=" + value[2] + "&of=" + value[1] + "&ncode=" + value[0];
-    std::cout << url << std::endl;
-    Aboutcurl aboutcurl[] = {
-        {"Narou", url.c_str(), "Mozilla/5.0 (X11; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0"}
-    };
-    
-    docurl(aboutcurl[0]);
-    
+//    dj.addNovels(settingspath, "AAA", "N1443BP");
 }
 
 //C++ Method Wrapper for ObjC & Swift
@@ -97,72 +86,65 @@ void writeLog(Head&& head, Tail&&... tail) {
     writeLog(s);
 }
 
-void renewCheck(std::string contents, std::string filepath) {
-    
+//this words is from Internet
+void renewCheck(std::string wordsfromInternet, std::string novelName, std::string filepath) {
     int before,after;
     
-    std::ifstream ifs(filepath);
-    //the novels words to get ReNewal Info
-    std::string words;
-    std::getline(ifs, words);
-    std::cout << words << std::endl;
-    
+    std::cout << __LINE__ << std::endl;
+    //filepath should be datapath
+    std::string words = dj.readWordsfromLocal(filepath, novelName);
+
     if(words.empty()) {
         before = 0;
     } else {
         before = std::stoi(words);
     }
     
-    ifs.close();
-    
-    std::ofstream ofs;
-    ofs.open(filepath, std::ios::out);
-    
-    std::string next_words = dj.readJsonFilefromInternet(contents.c_str());
-    std::cout << next_words << std::endl;
+    std::string next_words = wordsfromInternet;
     
     if(next_words.empty()) {
         after = 0;
     } else {
         after = std::stoi(next_words);
     }
-       
-    ofs << next_words << std::endl;
-    ofs.close();
-    
-    NSMutableString* novelname = [NSMutableString stringWithString:@"ReZero"];
+    dj.saveWords(filepath, novelName, next_words);
+    NSString* novelname = [NSString stringWithUTF8String:novelName.c_str()];
+    compareCheck(before, after, novelname, words, next_words);
+}
+
+void compareCheck(int before, int after, NSString* novelName, std::string words, std::string next_words) {
     if(before < after) {
         //Here means there are new Renewals
         ocf.setisReNew(1);
-        ocf.setnovelname(novelname);
-        std::cout << "a<b" << std::endl;
+        ocf.setnovelname(novelName);
         writeLog(words, next_words, "a<b");
     } else if(before == after) {
         //Here means there is no Renewals
-//        isReNew = 0;
+        //        isReNew = 0;
         ocf.setisReNew(0);
-//        novelname = [NSMutableString stringWithString:@"ReZero"];
-        ocf.setnovelname(novelname);
-        std::cout << "a==b" << std::endl;
+        ocf.setnovelname(novelName);
         writeLog(words, next_words, "a==b");
     }
 }
 
 //A Method for Executing CURL
-void docurl(const Aboutcurl aboutcurl) {
-
+void docurl(std::string url, std::string ncode, std::string novelName) {
+    
     CURL *curl;
     CURLcode ret;
     curl = curl_easy_init();
-    std::string chunk;
+    std::string chunk, reqURL;
+    const char* userAgent = "Mozilla/5.0 (X11; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0";
     
     if(curl == NULL) {
         std::cerr << "curl_east_init() failed" << std::endl;
     }
-        
-    curl_easy_setopt(curl, CURLOPT_URL, aboutcurl.url);
+    
+    reqURL = url + ncode;
+    
+    curl_easy_setopt(curl, CURLOPT_URL, reqURL.c_str());
     curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, callbackWrite);
-    curl_easy_setopt(curl, CURLOPT_USERAGENT, aboutcurl.useragent);
+    curl_easy_setopt(curl, CURLOPT_USERAGENT, userAgent);
     //    curl_easy_setopt(curl, CURLOPT_COOKIE, thecookie);
     curl_easy_setopt(curl, CURLOPT_WRITEDATA, &chunk);
     ret = curl_easy_perform(curl);
@@ -172,17 +154,15 @@ void docurl(const Aboutcurl aboutcurl) {
         std::cerr << "curl_easy_perform() failed." << std::endl;
     }
     
-    chunk.replace(34, 1, "");
-    chunk.replace(0, 16, "");
-    chunk.insert(10, "\"");
-    chunk.insert(18, "\"");
-
-    renewCheck(chunk, datapath);
     std::cout << chunk << std::endl;
+    std::string words = dj.readWordsfromInternet(chunk);
+    std::cout << words << std::endl;
+    renewCheck(words, novelName, datapath);
+    std::cout << __LINE__ << std::endl;
 }
 
-size_t callbackWrite(char *ptr, size_t size, size_t nmemb, std::string * stream) {
-    int datalength = size * nmemb;
+size_t callbackWrite(char *ptr, size_t size, size_t nmemb, std::string *stream) {
+    int datalength = static_cast<int>(size * nmemb);
     stream -> append(ptr, datalength);
     return datalength;
 }

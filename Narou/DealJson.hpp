@@ -11,19 +11,24 @@
 
 #include <stdio.h>
 #include <array>
+#include <map>
 #include <string>
 
 class DealJson {
     
     public :
     
-    std::string readJsonFilefromInternet(const char* contents);
+    std::string readWordsfromInternet(std::string jsonobj);
     
-    //std::array<std::string, 5>
-    std::array<std::string, 4> readJsonFilefromLocal(std::string filepath);
+    std::string readWordsfromLocal(std::string filepath, std::string novelName);
     
-    void makeJsonFile(std::string filepath, std::string ncode, std::string of);
+    std::map<std::string, std::string> readSettingsJsonFile(std::string filepath);
     
+    void makeSettingsJsonFile(std::string filepath);
+    
+    void saveWords(std::string filepath, std::string novelName, std::string words);
+    
+    void addNovels(std::string filepath, std::string novelName, std::string value);
 };
 
 #endif /* DealJson_hpp */

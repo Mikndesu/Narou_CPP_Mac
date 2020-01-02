@@ -17,8 +17,8 @@
 -(NSInteger) getIsReNew;
 -(NSString *) getnovelname;
 -(void) showLog;
--(void) rewriteJson:(NSString *) of ncode:(NSString *) ncode;
 -(void) deleteSettings;
+-(void) addNovelonGUI:(NSString *) novelname ncode:(NSString *) ncode;
 
 @end
 #endif
@@ -28,7 +28,7 @@
 class OnClickFunction {
 public:
     void setisReNew(NSInteger IsReNew);
-    void setnovelname(NSMutableString* novelName);
+    void setnovelname(NSString* novelName);
 };
 
 #endif
