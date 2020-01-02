@@ -135,7 +135,7 @@ void DealJson::saveWords(std::string filepath, std::string novelName, std::strin
        picojson::object object, obj;
        for(auto i = array.begin(); i != array.end(); i++) {
            object = i->get<picojson::object>();
-           if(object.count(novelName) == 1 || (object.count(novelName) == 0 && i == array.end()-1)) {
+           if(object.count(novelName) == 1) {
                obj.emplace(std::make_pair(novelName, picojson::value(words)));
                r.push_back(picojson::value(obj));
                count = 1;
