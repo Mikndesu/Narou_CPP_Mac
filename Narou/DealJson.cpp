@@ -31,7 +31,7 @@ void makeDatas(std::string filepath, std::string name, std::string value) {
     object.emplace(std::make_pair(name, picojson::value(value)));
     array.push_back(picojson::value(object));
     ofs << picojson::value(array) << std::endl;
-    PROCESS_END:
+PROCESS_END:
     ofs.close();
 }
 
@@ -78,7 +78,7 @@ std::string DealJson::readWordsfromLocal(std::string filepath, std::string novel
                 return "";
             }
             if(o.count(novelName) == 1) {
-            return o[novelName].get<std::string>();
+                return o[novelName].get<std::string>();
             }
         }
     }
@@ -95,7 +95,7 @@ std::map<std::string, std::string> DealJson::readSettingsJsonFile(std::string fi
         for(auto it = array.begin(); it != array.end(); it++) {
             picojson::object& o = it->get<picojson::object>();
             for(auto ite = o.begin(); ite != o.end(); ite++) {
-            names.insert(std::make_pair(ite->first, ite->second.to_str()));
+                names.insert(std::make_pair(ite->first, ite->second.to_str()));
             }
         }
     }
@@ -130,24 +130,24 @@ void DealJson::saveWords(std::string filepath, std::string novelName, std::strin
     const char* jsonobj = check.c_str();
     picojson::parse(v, jsonobj, jsonobj + strlen(jsonobj), &err);
     if(err.empty()) {
-       picojson::array& array = v.get<picojson::array>();
-       picojson::array r;
-       picojson::object object, obj;
-       for(auto i = array.begin(); i != array.end(); i++) {
-           object = i->get<picojson::object>();
-           if(object.count(novelName) == 1) {
-               obj.emplace(std::make_pair(novelName, picojson::value(words)));
-               r.push_back(picojson::value(obj));
-               count = 1;
-           } else if(object.count(novelName) == 0) {
-               r.push_back(picojson::value(object));
-               if(i == array.end()-1 && count == 0) {
-                   std::cout << "New" << std::endl;
-                   obj.emplace(std::make_pair(novelName, picojson::value(words)));
-                   r.push_back(picojson::value(obj));
-               }
-           }
-       }
+        picojson::array& array = v.get<picojson::array>();
+        picojson::array r;
+        picojson::object object, obj;
+        for(auto i = array.begin(); i != array.end(); i++) {
+            object = i->get<picojson::object>();
+            if(object.count(novelName) == 1) {
+                obj.emplace(std::make_pair(novelName, picojson::value(words)));
+                r.push_back(picojson::value(obj));
+                count = 1;
+            } else if(object.count(novelName) == 0) {
+                r.push_back(picojson::value(object));
+                if(i == array.end()-1 && count == 0) {
+                    std::cout << "New" << std::endl;
+                    obj.emplace(std::make_pair(novelName, picojson::value(words)));
+                    r.push_back(picojson::value(obj));
+                }
+            }
+        }
         std::ofstream ofs;
         ofs.open(filepath, std::ios::trunc);
         ofs << picojson::value(r) << std::endl;
@@ -182,7 +182,7 @@ void DealJson::addNovels(std::string filepath, std::string novelName, std::strin
             goto END;
         }
     }
-    END:
+END:
     std::ofstream ofs;
     ofs.open(filepath, std::ios::trunc);
     ofs << picojson::value(array) << std::endl;
