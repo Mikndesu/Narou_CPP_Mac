@@ -18,12 +18,7 @@
 class Narou {
 public:
     Narou(std::string, std::string);
-    void getNarouInfo();
-private:
-    //Expected novelName : ncode : length
-    std::array<std::string, 3> novelInfo;
-    std::string apiUrl;
-    std::string internetConnection();
+    void checkAll();
 };
 
 #endif /* Narou_hpp */

@@ -15,11 +15,11 @@
 		7B5E054C2388B72600A2712F /* NarouTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5E054B2388B72600A2712F /* NarouTests.swift */; };
 		7B5E05572388B72600A2712F /* NarouUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5E05562388B72600A2712F /* NarouUITests.swift */; };
 		7B5E056A2388B7E100A2712F /* Narou_Core.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7B5E05672388B7E000A2712F /* Narou_Core.mm */; };
-		7B5EFB67241A596B0039EAEA /* Settings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B5EFB65241A596B0039EAEA /* Settings.cpp */; };
-		7B5EFB6B241A5F290039EAEA /* NovelManage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B5EFB69241A5F290039EAEA /* NovelManage.cpp */; };
+		7B5EFB6B241A5F290039EAEA /* NovelNcode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B5EFB69241A5F290039EAEA /* NovelNcode.cpp */; };
 		7B5EFB72241AB38F0039EAEA /* Narou.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B5EFB70241AB38F0039EAEA /* Narou.cpp */; };
 		7B6AD8ED23A4F61600A4CC71 /* OnClickFunction.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7B6AD8EC23A4F61600A4CC71 /* OnClickFunction.mm */; };
 		7B6AD8F023ABA0ED00A4CC71 /* Planning.md in Resources */ = {isa = PBXBuildFile; fileRef = 7B6AD8EF23ABA0ED00A4CC71 /* Planning.md */; };
+		7B7679FD241B652700E61B0F /* NovelLength.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B7679FB241B652700E61B0F /* NovelLength.cpp */; };
 		7BBAC57E23B0823500A2C33A /* AddNovelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBAC57D23B0823500A2C33A /* AddNovelsViewController.swift */; };
 		7BECD10623983FB400003BBD /* ReadMe.md in Resources */ = {isa = PBXBuildFile; fileRef = 7BECD10523983FB400003BBD /* ReadMe.md */; };
 		7BF75BD1239814F5000CCE96 /* DealJson.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7BF75BCF239814F4000CCE96 /* DealJson.cpp */; };
@@ -61,15 +61,15 @@
 		7B5E05672388B7E000A2712F /* Narou_Core.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Narou_Core.mm; sourceTree = "<group>"; };
 		7B5E05682388B7E100A2712F /* Narou_Core.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Narou_Core.h; sourceTree = "<group>"; };
 		7B5E056B238BBD8600A2712F /* picojson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = picojson.h; sourceTree = "<group>"; };
-		7B5EFB65241A596B0039EAEA /* Settings.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Settings.cpp; sourceTree = "<group>"; };
-		7B5EFB66241A596B0039EAEA /* Settings.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Settings.hpp; sourceTree = "<group>"; };
-		7B5EFB69241A5F290039EAEA /* NovelManage.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = NovelManage.cpp; sourceTree = "<group>"; };
-		7B5EFB6A241A5F290039EAEA /* NovelManage.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = NovelManage.hpp; sourceTree = "<group>"; };
+		7B5EFB69241A5F290039EAEA /* NovelNcode.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = NovelNcode.cpp; sourceTree = "<group>"; };
+		7B5EFB6A241A5F290039EAEA /* NovelNcode.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = NovelNcode.hpp; sourceTree = "<group>"; };
 		7B5EFB70241AB38F0039EAEA /* Narou.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Narou.cpp; sourceTree = "<group>"; };
 		7B5EFB71241AB38F0039EAEA /* Narou.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Narou.hpp; sourceTree = "<group>"; };
 		7B6AD8EC23A4F61600A4CC71 /* OnClickFunction.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = OnClickFunction.mm; sourceTree = "<group>"; };
 		7B6AD8EE23A4F64100A4CC71 /* OnClickFunction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OnClickFunction.h; sourceTree = "<group>"; };
 		7B6AD8EF23ABA0ED00A4CC71 /* Planning.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Planning.md; sourceTree = "<group>"; };
+		7B7679FB241B652700E61B0F /* NovelLength.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = NovelLength.cpp; sourceTree = "<group>"; };
+		7B7679FC241B652700E61B0F /* NovelLength.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = NovelLength.hpp; sourceTree = "<group>"; };
 		7BBAC57D23B0823500A2C33A /* AddNovelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNovelsViewController.swift; sourceTree = "<group>"; };
 		7BECD10523983FB400003BBD /* ReadMe.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ReadMe.md; sourceTree = "<group>"; };
 		7BF75BCF239814F4000CCE96 /* DealJson.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DealJson.cpp; sourceTree = "<group>"; };
@@ -176,46 +176,38 @@
 		7B5EFB63241A59550039EAEA /* Novel */ = {
 			isa = PBXGroup;
 			children = (
+				7B5EFB74241AD20B0039EAEA /* Length */,
+				7B5EFB73241AD2010039EAEA /* Ncode */,
 			);
 			path = Novel;
-			sourceTree = "<group>";
-		};
-		7B5EFB64241A595C0039EAEA /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				7B5EFB65241A596B0039EAEA /* Settings.cpp */,
-				7B5EFB66241A596B0039EAEA /* Settings.hpp */,
-			);
-			path = Settings;
 			sourceTree = "<group>";
 		};
 		7B5EFB6D241AB3160039EAEA /* CPP */ = {
 			isa = PBXGroup;
 			children = (
-				7B5EFB6F241AB33B0039EAEA /* DownloadData */,
-				7B5EFB6E241AB32A0039EAEA /* Local */,
+				7B5EFB70241AB38F0039EAEA /* Narou.cpp */,
+				7B5EFB71241AB38F0039EAEA /* Narou.hpp */,
+				7B5EFB63241A59550039EAEA /* Novel */,
 			);
 			path = CPP;
 			sourceTree = "<group>";
 		};
-		7B5EFB6E241AB32A0039EAEA /* Local */ = {
+		7B5EFB73241AD2010039EAEA /* Ncode */ = {
 			isa = PBXGroup;
 			children = (
-				7B5EFB64241A595C0039EAEA /* Settings */,
-				7B5EFB63241A59550039EAEA /* Novel */,
+				7B5EFB69241A5F290039EAEA /* NovelNcode.cpp */,
+				7B5EFB6A241A5F290039EAEA /* NovelNcode.hpp */,
 			);
-			path = Local;
+			path = Ncode;
 			sourceTree = "<group>";
 		};
-		7B5EFB6F241AB33B0039EAEA /* DownloadData */ = {
+		7B5EFB74241AD20B0039EAEA /* Length */ = {
 			isa = PBXGroup;
 			children = (
-				7B5EFB70241AB38F0039EAEA /* Narou.cpp */,
-				7B5EFB71241AB38F0039EAEA /* Narou.hpp */,
-				7B5EFB69241A5F290039EAEA /* NovelManage.cpp */,
-				7B5EFB6A241A5F290039EAEA /* NovelManage.hpp */,
+				7B7679FB241B652700E61B0F /* NovelLength.cpp */,
+				7B7679FC241B652700E61B0F /* NovelLength.hpp */,
 			);
-			path = DownloadData;
+			path = Length;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -356,10 +348,10 @@
 				7BF75BD1239814F5000CCE96 /* DealJson.cpp in Sources */,
 				7B5E056A2388B7E100A2712F /* Narou_Core.mm in Sources */,
 				7BBAC57E23B0823500A2C33A /* AddNovelsViewController.swift in Sources */,
-				7B5EFB67241A596B0039EAEA /* Settings.cpp in Sources */,
 				7B5EFB72241AB38F0039EAEA /* Narou.cpp in Sources */,
 				7B5E05392388B72200A2712F /* AppDelegate.swift in Sources */,
-				7B5EFB6B241A5F290039EAEA /* NovelManage.cpp in Sources */,
+				7B7679FD241B652700E61B0F /* NovelLength.cpp in Sources */,
+				7B5EFB6B241A5F290039EAEA /* NovelNcode.cpp in Sources */,
 				7B6AD8ED23A4F61600A4CC71 /* OnClickFunction.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
