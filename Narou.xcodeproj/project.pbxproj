@@ -133,13 +133,10 @@
 		7B5E05372388B72200A2712F /* Narou */ = {
 			isa = PBXGroup;
 			children = (
+				7B7679FF241E6BAE00E61B0F /* Deprecated */,
 				7B5EFB6D241AB3160039EAEA /* CPP */,
-				7BF75BCF239814F4000CCE96 /* DealJson.cpp */,
-				7B6AD8EC23A4F61600A4CC71 /* OnClickFunction.mm */,
-				7B6AD8EE23A4F64100A4CC71 /* OnClickFunction.h */,
 				7B5E05672388B7E000A2712F /* Narou_Core.mm */,
 				7B5E05682388B7E100A2712F /* Narou_Core.h */,
-				7BF75BD0239814F4000CCE96 /* DealJson.hpp */,
 				7BBAC57D23B0823500A2C33A /* AddNovelsViewController.swift */,
 				7B5E05382388B72200A2712F /* AppDelegate.swift */,
 				7B5E053C2388B72600A2712F /* Assets.xcassets */,
@@ -208,6 +205,17 @@
 				7B7679FC241B652700E61B0F /* NovelLength.hpp */,
 			);
 			path = Length;
+			sourceTree = "<group>";
+		};
+		7B7679FF241E6BAE00E61B0F /* Deprecated */ = {
+			isa = PBXGroup;
+			children = (
+				7BF75BCF239814F4000CCE96 /* DealJson.cpp */,
+				7BF75BD0239814F4000CCE96 /* DealJson.hpp */,
+				7B6AD8EC23A4F61600A4CC71 /* OnClickFunction.mm */,
+				7B6AD8EE23A4F64100A4CC71 /* OnClickFunction.h */,
+			);
+			path = Deprecated;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

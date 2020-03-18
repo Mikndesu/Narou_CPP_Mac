@@ -15,7 +15,7 @@
 
 class NovelLength {
 public:
-    NovelLength(const std::string&, const std::string&, const std::string&);
+    NovelLength(const std::string, const std::string, const std::string);
     ~NovelLength();
     bool isReNew();
 private:

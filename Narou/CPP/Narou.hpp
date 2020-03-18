@@ -10,15 +10,17 @@
 #define Narou_hpp
 
 #include <iostream>
-#include <stdio.h>
 #include <string>
-#include <array>
-#include <curl/curl.h>
+#include <vector>
 
 class Narou {
 public:
-    Narou(std::string, std::string);
-    void checkAll();
+    Narou(const std::string, const std::string);
+    std::vector<std::string> checkAll();
+    void addNovel(const std::string, const std::string);
+private:
+    std::string _ncodePath;
+    std::string _lengthPath;
 };
 
 #endif /* Narou_hpp */

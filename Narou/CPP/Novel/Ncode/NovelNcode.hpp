@@ -19,11 +19,11 @@ class NovelNcode {
 public:
     NovelNcode(const std::string);
     std::vector<std::pair<std::string, std::string>> allNovelInfo() const;
-    void addNovel(const std::string&, const std::string&);
+    void addNovel(const std::string, const std::string);
 private:
     void saveNovelData();
     void defaultNovel();
-    std::string novelDataPath;
+    std::string _novelDataPath;
     picojson::value _value;
 };
 

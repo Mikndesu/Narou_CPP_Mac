@@ -11,23 +11,30 @@
 #include <fstream>
 #include "picojson.h"
 
-NovelNcode::NovelNcode(const std::string path) : novelDataPath(path) {
+NovelNcode::NovelNcode(const std::string path) : _novelDataPath(path) {
     std::ifstream ifs(path, std::ios::in);
     if(!ifs.is_open()) {
         defaultNovel();
     }
     std::string data, err;
     std::getline(ifs, data);
-    picojson::parse(_value, data.c_str(), data.c_str()+strlen(data.c_str()), &err);
+    if(data.empty()) {
+        defaultNovel();
+    } else {
+        picojson::parse(_value, data.c_str(), data.c_str()+strlen(data.c_str()), &err);
+    }
+    std::cout << err << std::endl;
+    std::cout << __LINE__ << std::endl;
 }
 
 void NovelNcode::saveNovelData() {
-    std::ofstream ofs(novelDataPath, std::ios::out);
+    std::ofstream ofs(_novelDataPath, std::ios::out);
     ofs << _value << std::endl;
 }
 
 void NovelNcode::defaultNovel() {
-    std::ofstream ofs(novelDataPath, std::ios::out);
+    std::ofstream ofs(_novelDataPath, std::ios::out);
+    std::cout << _novelDataPath << std::endl;
     picojson::array array;
     picojson::object object;
     object.emplace(std::make_pair("ReZero", picojson::value("N2267BE")));
@@ -35,7 +42,7 @@ void NovelNcode::defaultNovel() {
     ofs << picojson::value(array) << std::endl;
 }
 
-void NovelNcode::addNovel(const std::string& novelName, const std::string& ncode) {
+void NovelNcode::addNovel(const std::string novelName, const std::string ncode) {
     auto& array = _value.get<picojson::array>();
     for(auto it = array.begin(); it != array.end(); it++) {
         const auto& object = it->get<picojson::object>();

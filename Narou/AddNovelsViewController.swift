@@ -20,7 +20,7 @@ class AddNovelsViewController: NSViewController {
     @IBAction func doneClick(_ sender: Any) {
         let Name = name.stringValue
         let Ncode = ncode.stringValue
-        OnClickFun.init().addNovelonGUI(Name, ncode:Ncode);
+        UseCurlMain.init().addNovelonGUI(Name, ncode: Ncode)
     }
     
 }

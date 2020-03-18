@@ -9,23 +9,13 @@
 #ifndef Narou_Core_h
 #define Narou_Core_h
 
-#ifdef __OBJC__
 #import <Foundation/Foundation.h>
 @interface UseCurlMain : NSObject
 
--(void) usecurlmain;
+-(NSArray*) usecurlmain;
 -(void) writelog:(NSString*) contents;
+-(void) addNovelonGUI:(NSString *) novelname ncode:(NSString *) ncode;
+
 @end
-#endif
-
-#ifdef __cplusplus
-#include <string>
-
-class Narou_Core {
-public:
-    std::string makeNeedFile();
-};
-
-#endif
 
 #endif /* Narou_Core_h */
